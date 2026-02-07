@@ -16,4 +16,4 @@ Reading every technology review while studying in DC led me to follow my passion
 
 My work has taken me everywhere from Tokyo to Tel Aviv, and I'm always looking for the next story worth telling. Stick around, read a bit, and let's connect.
 
-[More about me](/about) | [Resume](/resume) | [Email Me](mailto:mattjrosenberg@gmail.com)
+[More about me](/about) · [Resume](/resume) · [Email Me](mailto:mattjrosenberg@gmail.com)
