@@ -1,5 +1,6 @@
 ---
 title: resume
+hide_title: true
 ---
 
 ![Resume hero](/assets/images/IMG_0917.jpg)
