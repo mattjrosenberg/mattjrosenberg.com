@@ -1,9 +1,19 @@
 ---
-layout: page
-title: Matt Rosenberg
+layout: note
+title: welcome
 id: home
+hide_title: true
+hide_backlinks: true
 ---
 
-Welcome to my site. This is a test deployment -- content migration coming soon.
+![Hero](/assets/images/000555910013.jpg)
 
-Browse my [[welcome|notes]] to get started.
+# Matt Rosenberg
+
+I'm Matt Rosenberg, a comms guy who loves helping brands tell great stories, handle tough moments, and get noticed.
+
+Reading every technology review while studying in DC led me to follow my passion into the industry. Since then, I've managed to combine both policy and tech into a career elevating the great work technologists do.
+
+My work has taken me everywhere from Tokyo to Tel Aviv, and I'm always looking for the next story worth telling. Stick around, read a bit, and let's connect.
+
+[More about me](/about) | [Resume](/resume) | [Email Me](mailto:mattjrosenberg@gmail.com)
