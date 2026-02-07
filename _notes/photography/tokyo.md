@@ -1,5 +1,6 @@
 ---
 title: tokyo
+permalink: /photography/tokyo
 hide_title: true
 hide_backlinks: true
 ---

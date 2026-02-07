@@ -1,5 +1,6 @@
 ---
 title: nyc
+permalink: /photography/nyc
 hide_title: true
 hide_backlinks: true
 ---

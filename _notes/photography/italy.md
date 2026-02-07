@@ -1,5 +1,6 @@
 ---
 title: italy
+permalink: /photography/italy
 hide_title: true
 hide_backlinks: true
 ---

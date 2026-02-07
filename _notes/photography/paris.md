@@ -1,5 +1,6 @@
 ---
 title: paris
+permalink: /photography/paris
 hide_title: true
 hide_backlinks: true
 ---

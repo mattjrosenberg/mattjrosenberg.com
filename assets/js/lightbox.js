@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   article.addEventListener("click", function (e) {
     if (e.target.tagName !== "IMG") return;
+    if (e.target.closest(".gallery-card")) return;
 
     var overlay = document.createElement("div");
     overlay.className = "lightbox";
