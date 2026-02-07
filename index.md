@@ -1,11 +1,9 @@
 ---
 layout: page
-title: Welcome! 🥬
+title: Matt Rosenberg
 id: home
 ---
 
-<section class="callout">
-	Take a look at <a href="/your-first-note.html" class="internal-link">Your First Note</a> to get started on your exploration.
-</section>
+Welcome to my site. This is a test deployment -- content migration coming soon.
 
-{% include_relative README.md %}
+Browse my [[welcome|notes]] to get started.
