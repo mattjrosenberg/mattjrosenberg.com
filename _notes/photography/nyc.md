@@ -10,29 +10,21 @@ hide_backlinks: true
 ![NYC 1](/assets/images/photography/nyc/nyc_1.jpg)
 
 <div class="img-grid">
-
-![NYC 2](/assets/images/photography/nyc/nyc_2.jpg)
-![NYC 3](/assets/images/photography/nyc/nyc_3.jpg)
-
+  <img src="/assets/images/photography/nyc/nyc_2.jpg" alt="NYC 2">
+  <img src="/assets/images/photography/nyc/nyc_3.jpg" alt="NYC 3">
 </div>
 
 <div class="img-grid">
-
-![NYC 4](/assets/images/photography/nyc/nyc_4.JPG)
-![NYC 5](/assets/images/photography/nyc/nyc_5.jpg)
-
+  <img src="/assets/images/photography/nyc/nyc_4.JPG" alt="NYC 4">
+  <img src="/assets/images/photography/nyc/nyc_5.jpg" alt="NYC 5">
 </div>
 
 <div class="img-grid">
-
-![NYC 6](/assets/images/photography/nyc/nyc_6.jpg)
-![NYC 7](/assets/images/photography/nyc/nyc_7.jpg)
-
+  <img src="/assets/images/photography/nyc/nyc_6.jpg" alt="NYC 6">
+  <img src="/assets/images/photography/nyc/nyc_7.jpg" alt="NYC 7">
 </div>
 
 <div class="img-grid">
-
-![NYC 8](/assets/images/photography/nyc/nyc_8.jpg)
-![NYC 9](/assets/images/photography/nyc/nyc_9.jpg)
-
+  <img src="/assets/images/photography/nyc/nyc_8.jpg" alt="NYC 8">
+  <img src="/assets/images/photography/nyc/nyc_9.jpg" alt="NYC 9">
 </div>

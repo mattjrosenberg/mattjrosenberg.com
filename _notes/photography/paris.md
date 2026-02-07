@@ -8,24 +8,18 @@ hide_backlinks: true
 # Paris
 
 <div class="img-grid">
-
-![Paris 1](/assets/images/photography/paris/Paris_1.JPG)
-![Paris 2](/assets/images/photography/paris/Paris_2.JPG)
-
+  <img src="/assets/images/photography/paris/Paris_1.JPG" alt="Paris 1">
+  <img src="/assets/images/photography/paris/Paris_2.JPG" alt="Paris 2">
 </div>
 
 <div class="img-grid">
-
-![Paris 7](/assets/images/photography/paris/Paris_7.jpg)
-![Paris 3](/assets/images/photography/paris/Paris_3.JPG)
-
+  <img src="/assets/images/photography/paris/Paris_7.jpg" alt="Paris 7">
+  <img src="/assets/images/photography/paris/Paris_3.JPG" alt="Paris 3">
 </div>
 
 <div class="img-grid">
-
-![Paris 4](/assets/images/photography/paris/Paris_4.JPG)
-![Paris 5](/assets/images/photography/paris/Paris_5.JPG)
-
+  <img src="/assets/images/photography/paris/Paris_4.JPG" alt="Paris 4">
+  <img src="/assets/images/photography/paris/Paris_5.JPG" alt="Paris 5">
 </div>
 
 ![Paris 6](/assets/images/photography/paris/Paris_6.JPG)
