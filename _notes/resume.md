@@ -6,7 +6,7 @@ title: resume
 
 # MATTHEW J. ROSENBERG
 
-New York, NY | [linkedin.com/in/mattjrosenberg](https://linkedin.com/in/mattjrosenberg)
+New York, NY ·[linkedin.com/in/mattjrosenberg](https://linkedin.com/in/mattjrosenberg)
 
 ## EXECUTIVE SUMMARY
 
@@ -16,7 +16,7 @@ Experienced public relations and communications executive specializing in techno
 
 ### Head of Corporate Communications, Sr. Product Marketing Manager
 
-**Plume Design** | New York, NY | November 2023 -- May 2025
+**Plume Design** ·New York, NY ·November 2023 -- May 2025
 
 - Directed global corporate and product communications strategies, driving significant increase in positive media coverage in connectivity and smart home sectors
 - Managed social media channels achieving 273% increase in impressions, 53% increase in engagements, and 11% increase in post link clicks
@@ -26,7 +26,7 @@ Experienced public relations and communications executive specializing in techno
 
 ### Head of Communications
 
-**Helbiz** | New York, NY | January 2022 -- December 2022
+**Helbiz** ·New York, NY ·January 2022 -- December 2022
 
 - Established first U.S. communications team for shared mobility company, building structure from ground up
 - Advised executive leadership on media relations, business strategy, and crisis communications for NASDAQ-listed company
@@ -36,7 +36,7 @@ Experienced public relations and communications executive specializing in techno
 
 ### Account Director, Technology
 
-**Weber Shandwick** | New York, NY | December 2020 -- January 2022
+**Weber Shandwick** ·New York, NY ·December 2020 -- January 2022
 
 - Led IBM Quantum and Innovation Campaign, delivering high-visibility media placements in AI, cloud computing, and quantum computing
 - Oversaw federal/public sector media workstreams, expanding IBM share of voice in government and B2B markets
@@ -46,7 +46,7 @@ Experienced public relations and communications executive specializing in techno
 
 ### Director, Public Relations & Communications
 
-**Wix.com** | New York, NY | September 2016 -- March 2020
+**Wix.com** ·New York, NY ·September 2016 -- March 2020
 
 - Managed product, security, corporate, and public affairs communications for global NASDAQ-listed technology company
 - Secured top-tier media placements in PCMag, TechCrunch, The Daily Mail, Cheddar, and AdWeek as spokesperson
@@ -57,7 +57,7 @@ Experienced public relations and communications executive specializing in techno
 
 ### AAE, Public Affairs & Corporate Communications and Digital Media
 
-**Porter Novelli** | Washington, DC | October 2015 -- September 2016
+**Porter Novelli** ·Washington, DC ·October 2015 -- September 2016
 
 - Supported public affairs and digital media teams developing communications strategies for policy, technology, financial, and government clients
 - Pitched media, conducted research, and produced content for digital and social platforms
@@ -66,11 +66,11 @@ Experienced public relations and communications executive specializing in techno
 ## EDUCATION
 
 **Bachelor of Arts, Public Communication**
-The American University, School of Communication | Washington, DC | May 2015
+The American University, School of Communication ·Washington, DC ·May 2015
 *Minors: Political Science and Justice*
 
 **Managing Risk in the Information Age Certificate**
-HarvardX | November 2019
+HarvardX ·November 2019
 
 ## CORE COMPETENCIES & SKILLS
 
