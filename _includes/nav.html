@@ -6,6 +6,7 @@
     <a class="internal-link{% if page.url == '/' %} active{% endif %}" href="/">welcome</a>
     <a class="internal-link{% if page.title == 'about' %} active{% endif %}" href="/about">about</a>
     <a class="internal-link{% if page.title == 'resume' %} active{% endif %}" href="/resume">resume</a>
+    <a class="internal-link{% if page.layout == 'post' or page.url == '/blog' %} active{% endif %}" href="/blog">blog</a>
     <a class="internal-link{% if page.url contains '/photography' %} active{% endif %}" href="/photography">photography</a>
   </div>
   <div class="theme-toggle" id="theme-toggle" title="Toggle dark mode">
