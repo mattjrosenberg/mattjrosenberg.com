@@ -55,8 +55,8 @@ Migrate mattjrosenberg.com from Obsidian Publish to Jekyll + Netlify for full CS
 ## Phase 5: Go Live
 
 - [ ] Final review of all pages on Netlify preview URL
-- [ ] Code simplify plugin run
-- [ ] Security review
+- [x] Code simplify plugin run
+- [x] Security review (first pass -- see findings below)
 - [ ] Disclose how the website was built in About page
 - [ ] Create an open-source version?
 - [ ] Update Cloudflare DNS: point mattjrosenberg.com to Netlify
@@ -89,3 +89,25 @@ Migrate mattjrosenberg.com from Obsidian Publish to Jekyll + Netlify for full CS
 - [Maxime Vaillancourt's Digital Garden](https://github.com/maximevaillancourt/digital-garden-jekyll-template) -- upstream template
 - [Obsidian Git plugin](https://github.com/Vinzent03/obsidian-git)
 - [Netlify docs](https://docs.netlify.com/)
+
+---
+
+## Security Findings
+
+### High
+- [ ] Update Gemfile.lock dependencies (`bundle update`) -- nokogiri, rexml, addressable have known CVEs
+
+### Medium
+- [ ] Add security headers to `netlify.toml` (CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy)
+- [ ] Add `Regexp.escape()` to note title interpolation in `bidirectional_links_generator.rb`
+- [ ] HTML-escape callout title/type in `obsidian_callouts.rb`
+- [ ] HTML-escape href in generated anchor tags in `bidirectional_links_generator.rb`
+- [ ] Replace `innerHTML` with safer DOM methods in `link-previews.html`
+- [ ] Add `| escape` filter to `page.title` in `<meta>` attributes in `head.html`
+
+### Low
+- [ ] Fix `target="blank"` to `target="_blank"` + add `rel="noopener noreferrer"` in `open_external_links_in_new_tab.rb`
+- [ ] HTML-escape image filenames in `obsidian_images_generator.rb`
+- [ ] Escape `page.favicon` in SVG data URI in `head.html`
+- [ ] Escape `page.category` in `note.html`
+- [ ] Update Ruby version in `netlify.toml` (3.1 is past EOL)

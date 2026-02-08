@@ -9,7 +9,8 @@ def convert_external_links(doc)
 
   parsed = Nokogiri::HTML(doc.content)
   parsed.css("a:not(.internal-link):not(.footnote-backref)").each do |link|
-    link.set_attribute('target', 'blank')
+    link.set_attribute('target', '_blank')
+    link.set_attribute('rel', 'noopener noreferrer')
   end
   doc.content = parsed.to_html
 end

@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+require 'cgi'
+
 class ObsidianCallouts < Jekyll::Generator
   priority :high
 
@@ -22,9 +24,12 @@ class ObsidianCallouts < Jekyll::Generator
           line.sub(/^>\s?/, '')
         }.join
 
+        escaped_type = CGI.escapeHTML(type)
+        escaped_title = CGI.escapeHTML(title)
+
         <<~HTML
-          <section class="callout callout-#{type}">
-          <div class="callout-title">#{title}</div>
+          <section class="callout callout-#{escaped_type}">
+          <div class="callout-title">#{escaped_title}</div>
 
           #{body}
           </section>

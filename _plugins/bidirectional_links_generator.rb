@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+require 'cgi'
+
 class BidirectionalLinksGenerator < Jekyll::Generator
   CODEBLOCK_EXCLUSION = '(?!.*?[\r\n]+[`{3,}|~{3,}])'
 
@@ -18,23 +20,30 @@ class BidirectionalLinksGenerator < Jekyll::Generator
         ).gsub('_', ' ').capitalize
         data_title = target.data['title']
 
-        href = "#{target.url}#{link_ext}"
+        href = CGI.escapeHTML("#{target.url}#{link_ext}")
         anchor = "<a class='internal-link' href='#{href}'>\\1</a>"
+
+        escaped_filename = Regexp.escape(filename_title)
+        escaped_data = Regexp.escape(data_title) if data_title
 
         # [[Title|display text]] - match by filename then by front matter title
         current_note.content = current_note.content.gsub(
-          /\[\[#{filename_title}\|(.+?)(?=\])\]\]#{CODEBLOCK_EXCLUSION}/i, anchor
+          /\[\[#{escaped_filename}\|(.+?)(?=\])\]\]#{CODEBLOCK_EXCLUSION}/i, anchor
         )
-        current_note.content = current_note.content.gsub(
-          /\[\[#{data_title}\|(.+?)(?=\])\]\]#{CODEBLOCK_EXCLUSION}/i, anchor
-        )
+        if escaped_data
+          current_note.content = current_note.content.gsub(
+            /\[\[#{escaped_data}\|(.+?)(?=\])\]\]#{CODEBLOCK_EXCLUSION}/i, anchor
+          )
+        end
 
         # [[Title]] - match by front matter title then by filename
+        if escaped_data
+          current_note.content = current_note.content.gsub(
+            /\[\[(#{escaped_data})\]\]#{CODEBLOCK_EXCLUSION}/i, anchor
+          )
+        end
         current_note.content = current_note.content.gsub(
-          /\[\[(#{data_title})\]\]#{CODEBLOCK_EXCLUSION}/i, anchor
-        )
-        current_note.content = current_note.content.gsub(
-          /\[\[(#{filename_title})\]\]#{CODEBLOCK_EXCLUSION}/i, anchor
+          /\[\[(#{escaped_filename})\]\]#{CODEBLOCK_EXCLUSION}/i, anchor
         )
       end
 

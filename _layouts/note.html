@@ -6,7 +6,7 @@ layout: default
   {% unless page.hide_title %}
     <h1>{{ page.title }}</h1>
     {% if page.last_modified_at and page.type != 'pages' %}
-    <header><p><time datetime="{{ page.last_modified_at | date_to_xmlschema }}">Last updated {{ page.last_modified_at | date: "%B %-d, %Y" }}</time>{% if page.category != null %} &ndash; {{ page.category }}{% endif %}</p></header>
+    <header><p><time datetime="{{ page.last_modified_at | date_to_xmlschema }}">Last updated {{ page.last_modified_at | date: "%B %-d, %Y" }}</time>{% if page.category != null %} &ndash; {{ page.category | escape }}{% endif %}</p></header>
     {% endif %}
   {% endunless %}
 

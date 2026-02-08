@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+require 'cgi'
+
 class WikiImages < Jekyll::Generator
   priority :highest
 
@@ -18,9 +20,13 @@ class WikiImages < Jekyll::Generator
           \s*["|']?([^"|']*)["|']?  # optional title
           \)                   # closing )
           (?!`$)               # exclude codeblocks
-        /x,
-        "<img src=\"#{IMAGE_PATH}\\2\" alt=\"\\1\" title=\"\\3\">"
-      )
+        /x
+      ) do
+        alt = CGI.escapeHTML(Regexp.last_match(1))
+        src = CGI.escapeHTML(Regexp.last_match(2))
+        title = CGI.escapeHTML(Regexp.last_match(3))
+        "<img src=\"#{IMAGE_PATH}#{src}\" alt=\"#{alt}\" title=\"#{title}\">"
+      end
 
       # Obsidian embeds without path: ![[image.png]]
       doc.content = doc.content.gsub(
@@ -30,9 +36,11 @@ class WikiImages < Jekyll::Generator
           ([^\]]+)             # filename
           \]\]                 # ]]
           (?!`$)               # exclude codeblocks
-        /x,
-        "<img src=\"#{IMAGE_PATH}\\1\">"
-      )
+        /x
+      ) do
+        src = CGI.escapeHTML(Regexp.last_match(1))
+        "<img src=\"#{IMAGE_PATH}#{src}\">"
+      end
 
       # Obsidian embeds with explicit path: ![[assets/images/image.png]]
       doc.content = doc.content.gsub(
@@ -41,9 +49,11 @@ class WikiImages < Jekyll::Generator
           ([^\]]+)             # full path
           \]\]                 # ]]
           (?!`$)               # exclude codeblocks
-        /x,
-        '<img src="\1">'
-      )
+        /x
+      ) do
+        src = CGI.escapeHTML(Regexp.last_match(1))
+        "<img src=\"#{src}\">"
+      end
     end
   end
 end
