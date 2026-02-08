@@ -23,6 +23,7 @@ page_excerpts: true
 
 plugins:
   - jekyll-last-modified-at
+  - jekyll-sitemap
 
 collections:
   notes:
