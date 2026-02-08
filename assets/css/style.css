@@ -79,7 +79,7 @@ body, html {
   padding: 0;
 }
 
-/* ----- Base Typography ----- */
+/* ----- Base Typography & Layout ----- */
 body {
   font-family: var(--font-body);
   font-size: var(--font-size);
@@ -88,6 +88,9 @@ body {
   background-color: var(--bg-primary);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  max-width: calc(var(--content-width) + var(--aside-width) + 4em);
+  margin: 0 auto;
+  padding: 2em 2em 4em;
 }
 
 ::selection {
@@ -135,22 +138,13 @@ a.internal-link {
 }
 
 /* ----- Layout ----- */
-body {
-  max-width: calc(var(--content-width) + var(--aside-width) + 4em);
-  margin: 0 auto;
-  padding: 2em 2em 4em;
-}
-
 main {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 2em;
 }
 
-article {
-  max-width: var(--content-width);
-}
-
+article,
 aside {
   max-width: var(--content-width);
 }
@@ -439,6 +433,15 @@ section.callout {
   margin: 1em 0;
 }
 
+.callout-title {
+  font-weight: 600;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5em;
+  color: var(--text-primary);
+}
+
 /* ----- Code ----- */
 code {
   font-family: var(--font-mono);
@@ -529,7 +532,6 @@ aside h5 {
 #graph-wrapper {
   background: var(--graph-bg);
   border: 1px solid var(--border-subtle);
-  height: auto;
   margin-top: 2em;
 }
 
@@ -567,10 +569,6 @@ aside h5 {
   cursor: help;
   background: var(--callout-bg);
   padding: 0 0.15em;
-}
-
-.invalid-link-brackets {
-  color: var(--text-faint);
 }
 
 /* ----- Footnotes ----- */

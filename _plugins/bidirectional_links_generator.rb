@@ -1,71 +1,52 @@
 # frozen_string_literal: true
 class BidirectionalLinksGenerator < Jekyll::Generator
+  CODEBLOCK_EXCLUSION = '(?!.*?[\r\n]+[`{3,}|~{3,}])'
+
   def generate(site)
     graph_nodes = []
     graph_edges = []
 
     all_notes = site.collections['notes'].docs
     all_pages = site.collections['pages'].docs
-
     all_docs = all_notes + all_pages
-
-    link_extension = !!site.config["use_html_extension"] ? '.html' : ''
+    link_ext = site.config["use_html_extension"] ? '.html' : ''
 
     all_docs.each do |current_note|
-
-      # Convert all Wiki/Roam-style double-bracket link syntax to plain HTML
-      # anchor tag elements (<a>) with "internal-link" CSS class
-      all_docs.each do |note_potentially_linked_to|
-        title_from_filename = File.basename(
-          note_potentially_linked_to.basename,
-          File.extname(note_potentially_linked_to.basename)
+      all_docs.each do |target|
+        filename_title = File.basename(
+          target.basename, File.extname(target.basename)
         ).gsub('_', ' ').capitalize
+        data_title = target.data['title']
 
-        new_href = "#{note_potentially_linked_to.url}#{link_extension}"
-        anchor_tag = "<a class='internal-link' href='#{new_href}'>\\1</a>"
+        href = "#{target.url}#{link_ext}"
+        anchor = "<a class='internal-link' href='#{href}'>\\1</a>"
 
-        # Replace double-bracketed links with label using note title
-        # [[A note about cats|this is a link to the note about cats]]
+        # [[Title|display text]] - match by filename then by front matter title
         current_note.content = current_note.content.gsub(
-          /\[\[#{title_from_filename}\|(.+?)(?=\])\]\](?!.*?[\r\n]+[`{3,}|~{3,}])/i,
-          anchor_tag
+          /\[\[#{filename_title}\|(.+?)(?=\])\]\]#{CODEBLOCK_EXCLUSION}/i, anchor
+        )
+        current_note.content = current_note.content.gsub(
+          /\[\[#{data_title}\|(.+?)(?=\])\]\]#{CODEBLOCK_EXCLUSION}/i, anchor
         )
 
-        # Replace double-bracketed links with label using note filename
-        # [[cats|this is a link to the note about cats]]
+        # [[Title]] - match by front matter title then by filename
         current_note.content = current_note.content.gsub(
-          /\[\[#{note_potentially_linked_to.data['title']}\|(.+?)(?=\])\]\](?!.*?[\r\n]+[`{3,}|~{3,}])/i,
-          anchor_tag
+          /\[\[(#{data_title})\]\]#{CODEBLOCK_EXCLUSION}/i, anchor
         )
-
-        # Replace double-bracketed links using note title
-        # [[a note about cats]]
         current_note.content = current_note.content.gsub(
-          /\[\[(#{note_potentially_linked_to.data['title']})\]\](?!.*?[\r\n]+[`{3,}|~{3,}])/i,
-          anchor_tag
+          /\[\[(#{filename_title})\]\]#{CODEBLOCK_EXCLUSION}/i, anchor
         )
-
-        # Replace double-bracketed links using note filename
-        # [[cats]]
-        current_note.content = current_note.content.gsub(
-          /\[\[(#{title_from_filename})\]\](?!.*?[\r\n]+[`{3,}|~{3,}])/i,
-          anchor_tag
-        )
-
       end
 
-      # At this point, all remaining double-bracket-wrapped words are
-      # pointing to non-existing pages, so let's turn them into disabled
-      # links by greying them out and changing the cursor
-      # Still need to find a way to exclude from codeblocks with ```
+      # Turn remaining unresolved [[links]] into greyed-out invalid markers
       current_note.content = current_note.content.gsub(
         /
-        (?:^\[{2}.|\s{1}\[{2}) # Starting with [[ on newline or preceded by space
-        ([^\]]+) # Capture entire filename
-        \]{2} # Make sure it ends in ]]
-        (?!.*?[\r\n]+[`{3,}|~{3,}]) # Exclude codeblocks
-        /x, # match on the remaining double-bracket links
-        <<~HTML.chomp    # replace with this HTML (\\1 is what was inside the brackets)
+          (?:^\[{2}.|\s{1}\[{2})  # [[ at start of line or after space
+          ([^\]]+)                 # capture link text
+          \]{2}                    # closing ]]
+          #{CODEBLOCK_EXCLUSION}   # exclude codeblocks
+        /x,
+        <<~HTML.chomp
           <span title='There is no note that matches this link.' class='invalid-link'>
             <span class='invalid-link-brackets'>[[</span>
             \\1
@@ -74,28 +55,23 @@ class BidirectionalLinksGenerator < Jekyll::Generator
       )
     end
 
-    # Identify note backlinks and add them to each note
+    # Build backlinks and graph data
     all_notes.each do |current_note|
-      # Nodes: Jekyll
-      notes_linking_to_current_note = all_notes.filter do |e|
-        e.content.include?(current_note.url)
+      backlinks = all_notes.filter { |n| n.content.include?(current_note.url) }
+      current_note.data['backlinks'] = backlinks
+
+      unless current_note.path.include?('_notes/index.html')
+        graph_nodes << {
+          id: note_id(current_note),
+          path: "#{current_note.url}#{link_ext}",
+          label: current_note.data['title'],
+        }
       end
 
-      # Nodes: Graph
-      graph_nodes << {
-        id: note_id_from_note(current_note),
-        path: "#{current_note.url}#{link_extension}",
-        label: current_note.data['title'],
-      } unless current_note.path.include?('_notes/index.html')
-
-      # Edges: Jekyll
-      current_note.data['backlinks'] = notes_linking_to_current_note
-
-      # Edges: Graph
-      notes_linking_to_current_note.each do |n|
+      backlinks.each do |n|
         graph_edges << {
-          source: note_id_from_note(n),
-          target: note_id_from_note(current_note),
+          source: note_id(n),
+          target: note_id(current_note),
         }
       end
     end
@@ -106,12 +82,9 @@ class BidirectionalLinksGenerator < Jekyll::Generator
     }))
   end
 
-  def note_id_from_note(note)
-    note.data['title']
-      .dup
-      .gsub(/\W+/, ' ')
-      .delete(' ')
-      .to_i(36)
-      .to_s
+  private
+
+  def note_id(note)
+    note.data['title'].dup.gsub(/\W+/, ' ').delete(' ').to_i(36).to_s
   end
 end

@@ -30,31 +30,33 @@ Migrate mattjrosenberg.com from Obsidian Publish to Jekyll + Netlify for full CS
 
 ---
 
-## Phase 3: Content Migration
+## Phase 3: Content Migration -- COMPLETE
 
-- [ ] Write migration script to add Jekyll frontmatter to existing notes
-- [ ] Convert Obsidian image syntax (`![[image]]`) to Jekyll paths
-- [ ] Restructure vault folders for Jekyll (`_notes/`, `assets/`)
-- [ ] Test all existing pages render correctly
+- [x] Frontmatter auto-injected by `empty_front_matter_note_injector.rb` plugin
+- [x] Obsidian image syntax converted at build time by `obsidian_images_generator.rb`
+- [x] Folder structure in place (`_notes/`, `assets/`)
+- [x] Existing pages render correctly
 - [x] Verify photography pages (paris, italy, nyc, tokyo) with image grids
 - [x] Verify lightbox/zoom still works
 
 ---
 
-## Phase 4: Feature Parity
+## Phase 4: Feature Parity -- COMPLETE
 
-- [ ] Wikilinks -- included in template
-- [ ] Backlinks -- included in template
-- [ ] Graph view -- included in template, style to match eink
-- [ ] Callouts (`> [!note]` syntax) -- custom CSS + plugin
-- [ ] Search -- add Pagefind or lunr.js
+- [x] Wikilinks -- handled by `bidirectional_links_generator.rb`
+- [x] Backlinks -- handled by `bidirectional_links_generator.rb`, displayed in note layout
+- [x] Callouts (`> [!note]` syntax) -- `obsidian_callouts.rb` plugin + CSS
 - [x] Dark/light toggle with persistence
+- [ ] ~Graph view -- code ready, eink-styled. Deferred (enable via config later)~
+- [ ] ~Search -- deferred (add Pagefind when more content exists)~
 
 ---
 
 ## Phase 5: Go Live
 
 - [ ] Final review of all pages on Netlify preview URL
+- [ ] Code simplify plugin run
+- [ ] Security review
 - [ ] Disclose how the website was built in About page
 - [ ] Create an open-source version?
 - [ ] Update Cloudflare DNS: point mattjrosenberg.com to Netlify

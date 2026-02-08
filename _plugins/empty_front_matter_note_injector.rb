@@ -13,6 +13,6 @@ Jekyll::Hooks.register :site, :after_init do |site|
     unless raw_note_content.start_with?('---')
       raw_note_content.prepend(EMPTY_FRONT_MATTER)
       File.write(filename, raw_note_content)
-    end  
+    end
   end
 end
