@@ -632,14 +632,20 @@ ul.archive,
     flex-wrap: wrap;
   }
 
+  .nav-avatar {
+    display: none;
+  }
+
   .nav-toggle-label {
     display: block;
-    order: 2;
+    margin-left: auto;
   }
 
   .theme-toggle {
-    margin-left: auto;
-    order: 1;
+    display: none;
+    order: 3;
+    margin-left: 0;
+    padding-top: 0.25em;
   }
 
   .nav-links {
@@ -647,12 +653,16 @@ ul.archive,
     flex-direction: column;
     width: 100%;
     gap: 0.5em;
-    order: 3;
+    order: 2;
     padding-top: 0.75em;
   }
 
   .nav-toggle-input:checked ~ .nav-links {
     display: flex;
+  }
+
+  .nav-toggle-input:checked ~ .theme-toggle {
+    display: inline-flex;
   }
 
   h1 { font-size: 1.5em; }
