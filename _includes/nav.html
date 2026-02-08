@@ -2,6 +2,10 @@
   <div class="site-title">
     <a class="internal-link" href="/"><img src="/assets/images/avatar.jpg" alt="Matthew Rosenberg" class="nav-avatar"><b>Matthew Rosenberg</b></a>
   </div>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+  <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle menu">
+    <span></span>
+  </label>
   <div class="nav-links">
     <a class="internal-link{% if page.url == '/' %} active{% endif %}" href="/">welcome</a>
     <a class="internal-link{% if page.title == 'about' %} active{% endif %}" href="/about">about</a>

@@ -218,6 +218,58 @@ nav {
   text-decoration-thickness: 2px;
 }
 
+/* ----- Hamburger Toggle (CSS-only) ----- */
+.nav-toggle-input {
+  display: none;
+}
+
+.nav-toggle-label {
+  display: none;
+  cursor: pointer;
+  padding: 8px 4px;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text-primary);
+  position: relative;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.nav-toggle-label span::before {
+  top: -7px;
+}
+
+.nav-toggle-label span::after {
+  top: 7px;
+}
+
+/* Animate to X when checked */
+.nav-toggle-input:checked + .nav-toggle-label span {
+  background: transparent;
+}
+
+.nav-toggle-input:checked + .nav-toggle-label span::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.nav-toggle-input:checked + .nav-toggle-label span::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
 /* ----- Theme Toggle (pill switch) ----- */
 .theme-toggle {
   display: inline-flex;
@@ -577,10 +629,30 @@ ul.archive,
 
   .site-nav {
     gap: 1em;
+    flex-wrap: wrap;
+  }
+
+  .nav-toggle-label {
+    display: block;
+    order: 2;
   }
 
   .theme-toggle {
-    margin-left: 0;
+    margin-left: auto;
+    order: 1;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5em;
+    order: 3;
+    padding-top: 0.75em;
+  }
+
+  .nav-toggle-input:checked ~ .nav-links {
+    display: flex;
   }
 
   h1 { font-size: 1.5em; }

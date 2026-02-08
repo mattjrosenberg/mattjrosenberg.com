@@ -7,7 +7,7 @@ timezone: America/New_York
 # Netlify doesn't need .htaccess
 # include: [".htaccess"]
 
-exclude: ["_includes/notes_graph.json", "obsidian-templates", "CLAUDE.md", ".obsidian"]
+exclude: ["_includes/notes_graph.json", "obsidian-templates", "CLAUDE.md", ".obsidian", "tasks"]
 
 # Netlify handles clean URLs
 use_html_extension: false
