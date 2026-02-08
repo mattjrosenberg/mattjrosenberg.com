@@ -167,6 +167,11 @@ nav {
   flex-wrap: wrap;
 }
 
+.site-title {
+  position: relative;
+  padding-left: 40px;
+}
+
 .site-title a {
   text-decoration: none;
   font-size: 1.1em;
@@ -174,12 +179,14 @@ nav {
 }
 
 .nav-avatar {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
   width: 32px;
   height: 32px;
   border-radius: 4px;
   border: 1px solid var(--border-color);
-  vertical-align: middle;
-  margin-right: 0.5em;
 }
 
 .site-title a:hover {
