@@ -674,8 +674,10 @@ footer {
   font-size: 0.85em;
   color: var(--text-faint);
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
+  max-width: none;
 }
 
 footer p {
