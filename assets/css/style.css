@@ -314,8 +314,9 @@ nav {
   transform: translateX(18px);
 }
 
-/* ----- Article Content ----- */
-article h1:first-of-type {
+/* ----- Article & Section Content ----- */
+article h1:first-of-type,
+section h1:first-of-type {
   margin-top: 0;
   font-size: 2em;
 }
