@@ -11,6 +11,8 @@ I am an experienced communications executive with expertise in technology, polic
 
 [Contact Me](mailto:mattjrosenberg@gmail.com) to get in touch. I'm happy to grab a coffee, speak to university classes, or join events. Please, no sales pitches.
 
+[View my resume](/resume)
+
 ---
 
 ## Colophon

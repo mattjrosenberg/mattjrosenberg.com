@@ -675,6 +675,23 @@ footer {
   color: var(--text-faint);
 }
 
+.social-links {
+  display: flex;
+  gap: 0.75em;
+  margin-bottom: 0.5em;
+}
+
+.social-links a {
+  color: var(--text-faint);
+  text-decoration: none;
+  display: flex;
+}
+
+.social-links a:hover {
+  color: var(--text-primary);
+  opacity: 1;
+}
+
 /* ----- Archive Page ----- */
 ul.archive,
 .archive li {
