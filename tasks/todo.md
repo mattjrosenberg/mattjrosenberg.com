@@ -57,11 +57,14 @@ Migrate mattjrosenberg.com from Obsidian Publish to Jekyll + Netlify for full CS
 - [ ] Final review of all pages on Netlify preview URL
 - [x] Code simplify plugin run
 - [x] Security review (first pass -- see findings below)
+- [x] Fix all security findings (deps, headers, escaping, DOM XSS)
+- [x] Add jekyll-sitemap plugin and robots.txt
 - [ ] Disclose how the website was built in About page
 - [ ] Create an open-source version?
-- [ ] Update Cloudflare DNS: point mattjrosenberg.com to Netlify
-- [ ] Set Cloudflare SSL to "Full (Strict)"
-- [ ] Verify site loads on mattjrosenberg.com with HTTPS
+- [x] Update Cloudflare DNS: point mattjrosenberg.com to Netlify
+- [x] Set Cloudflare SSL to "Full (Strict)"
+- [x] Configure Cloudflare security (Bot Fight Mode, rate limiting, browser integrity check, hotlink protection)
+- [x] Verify site loads on mattjrosenberg.com with HTTPS
 - [ ] Cancel Obsidian Publish subscription
 
 ---
@@ -95,19 +98,19 @@ Migrate mattjrosenberg.com from Obsidian Publish to Jekyll + Netlify for full CS
 ## Security Findings
 
 ### High
-- [ ] Update Gemfile.lock dependencies (`bundle update`) -- nokogiri, rexml, addressable have known CVEs
+- [x] Update Gemfile.lock dependencies -- deleted lockfile, Netlify resolves fresh versions
 
 ### Medium
-- [ ] Add security headers to `netlify.toml` (CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy)
-- [ ] Add `Regexp.escape()` to note title interpolation in `bidirectional_links_generator.rb`
-- [ ] HTML-escape callout title/type in `obsidian_callouts.rb`
-- [ ] HTML-escape href in generated anchor tags in `bidirectional_links_generator.rb`
-- [ ] Replace `innerHTML` with safer DOM methods in `link-previews.html`
-- [ ] Add `| escape` filter to `page.title` in `<meta>` attributes in `head.html`
+- [x] Add security headers to `netlify.toml` (CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy)
+- [x] Add `Regexp.escape()` to note title interpolation in `bidirectional_links_generator.rb`
+- [x] HTML-escape callout title/type in `obsidian_callouts.rb`
+- [x] HTML-escape href in generated anchor tags in `bidirectional_links_generator.rb`
+- [x] Replace `innerHTML` with safer DOM methods in `link-previews.html`
+- [x] Add `| escape` filter to `page.title` in `<meta>` attributes in `head.html`
 
 ### Low
-- [ ] Fix `target="blank"` to `target="_blank"` + add `rel="noopener noreferrer"` in `open_external_links_in_new_tab.rb`
-- [ ] HTML-escape image filenames in `obsidian_images_generator.rb`
-- [ ] Escape `page.favicon` in SVG data URI in `head.html`
-- [ ] Escape `page.category` in `note.html`
-- [ ] Update Ruby version in `netlify.toml` (3.1 is past EOL)
+- [x] Fix `target="blank"` to `target="_blank"` + add `rel="noopener noreferrer"` in `open_external_links_in_new_tab.rb`
+- [x] HTML-escape image filenames in `obsidian_images_generator.rb`
+- [x] Escape `page.favicon` in SVG data URI in `head.html`
+- [x] Escape `page.category` in `note.html`
+- [x] Update Ruby version in `netlify.toml` (3.1 is past EOL)
