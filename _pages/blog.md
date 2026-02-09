@@ -3,7 +3,6 @@ layout: page
 title: blog
 permalink: /blog
 ---
-
 <ul class="archive">
 {% for post in site.posts %}
 {% unless post.link %}

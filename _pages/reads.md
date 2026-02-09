@@ -3,7 +3,6 @@ layout: page
 title: reads
 permalink: /reads
 ---
-
 {% assign link_posts = site.posts | where_exp: "post", "post.link" %}
 {% for post in link_posts %}
 <article class="read-entry">
