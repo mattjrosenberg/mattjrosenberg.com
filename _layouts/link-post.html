@@ -1,0 +1,20 @@
+---
+layout: default
+---
+
+<article class="link-post">
+  <h1><a href="{{ page.link }}" target="_blank" rel="noopener">{{ page.title }} &rarr;</a></h1>
+  <header>
+    <p>
+      <span class="link-source">{{ page.link | split: '//' | last | split: '/' | first }}</span>
+      &middot;
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+    </p>
+  </header>
+
+  {% if page.quote %}
+  <blockquote class="pull-quote">{{ page.quote | markdownify }}</blockquote>
+  {% endif %}
+
+  {{ content }}
+</article>

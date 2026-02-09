@@ -2,6 +2,17 @@
 
 How to create and publish content on mattjrosenberg.com from Obsidian.
 
+## Contents
+
+- [Vault Setup](#vault-setup)
+- [Content Types](#content-types)
+- [Writing Content](#writing-content)
+- [Creating a Read (Mobile)](#creating-a-read-mobile)
+- [Adding a Photography Gallery](#adding-a-photography-gallery)
+- [Publishing Workflow](#publishing-workflow)
+- [Folders Excluded from Build](#folders-excluded-from-build)
+- [Image Handling Summary](#image-handling-summary)
+
 ---
 
 ## Vault Setup
@@ -9,6 +20,8 @@ How to create and publish content on mattjrosenberg.com from Obsidian.
 The site repo at `/Users/mrosenberg/mattjrosenberg.com` is an Obsidian vault. Open it as a vault in Obsidian (separate from your main knowledge vault).
 
 **Obsidian Git** is installed for commit/push from within Obsidian. You can also use the terminal.
+
+**Templater** is installed for template-driven note creation with prompts, auto-naming, and auto-filing.
 
 ---
 
@@ -43,6 +56,33 @@ summary:
 slug: my-post
 ---
 ```
+
+### Reads (`_posts/` with `link` field)
+
+Link posts for sharing interesting articles with commentary. Same `_posts/` collection as blog posts, differentiated by a `link` frontmatter field. Each read gets its own page and all reads aggregate on `/reads`.
+
+Template: `obsidian-templates/read.md` (Templater-powered -- see [Creating a Read](#creating-a-read-mobile))
+
+```yaml
+---
+title: Article Title
+date: 2026-02-09
+layout: link-post
+link: https://example.com/article
+tags: []
+summary: One-line summary shown on the /reads feed
+quote: A notable passage from the article (rendered as blockquote)
+slug: article-title
+---
+
+Your commentary here -- a paragraph or two about why this is interesting.
+```
+
+- `link` (required): URL to the external article. Triggers the link-post layout and excludes it from the blog feed.
+- `quote` (optional): Rendered as a styled blockquote above your commentary.
+- `summary` (optional): Shown on the `/reads` feed page below the title.
+- The title on the read's own page links out to the external article with an arrow indicator.
+- Source domain is extracted automatically from the URL.
 
 ### Pages (`_pages/`)
 
@@ -79,6 +119,22 @@ Images go in `assets/images/`. The plugin adds lazy loading to all images unless
 `<a href="/path">` links in raw HTML are **not** clickable inside Obsidian's editor. They only work on the live site. This is a known limitation -- Obsidian only navigates `[[wikilinks]]`.
 
 The photography gallery index uses raw HTML for the card layout, so those links won't navigate in Obsidian. Edit gallery pages by finding them in the file explorer instead.
+
+---
+
+## Creating a Read (Mobile)
+
+The `read` template uses Templater to automate file naming and placement. Works on both desktop and mobile.
+
+1. Open command palette, run **Templater: Create new note from template**
+2. Select `read`
+3. Enter the article title when prompted
+4. Enter the article URL when prompted
+5. The file is auto-named `YYYY-MM-DD-slug.md` and moved to `_posts/`
+6. Fill in `summary` and/or `quote` if desired, write your commentary below the frontmatter
+7. Obsidian Sync brings it to desktop; push via Obsidian Git or terminal
+
+The template auto-generates the date, slug, and filename. No manual renaming needed.
 
 ---
 

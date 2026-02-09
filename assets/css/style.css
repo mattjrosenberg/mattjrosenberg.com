@@ -439,6 +439,29 @@ blockquote p {
   margin: 0.25em 0;
 }
 
+/* ----- Link Posts ----- */
+.link-post h1 a {
+  text-decoration: none;
+}
+
+.link-post h1 a:hover {
+  text-decoration: underline;
+}
+
+.link-source {
+  color: var(--text-faint);
+  font-size: 0.85em;
+}
+
+.pull-quote {
+  font-size: 1.05em;
+  font-style: italic;
+  border-left: 3px solid var(--border-color);
+  margin: 1em 0;
+  padding: 0.5em 1em;
+  color: var(--text-secondary);
+}
+
 /* ----- Callouts (Obsidian-style) ----- */
 section.callout {
   padding: 1.5em;
