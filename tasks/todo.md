@@ -59,13 +59,13 @@ Migrate mattjrosenberg.com from Obsidian Publish to Jekyll + Netlify for full CS
 - [x] Security review (first pass -- see findings below)
 - [x] Fix all security findings (deps, headers, escaping, DOM XSS)
 - [x] Add jekyll-sitemap plugin and robots.txt
-- [ ] Disclose how the website was built in About page
+- [x] Disclose how the website was built in About page
 - [ ] Create an open-source version?
 - [x] Update Cloudflare DNS: point mattjrosenberg.com to Netlify
 - [x] Set Cloudflare SSL to "Full (Strict)"
 - [x] Configure Cloudflare security (Bot Fight Mode, rate limiting, browser integrity check, hotlink protection)
 - [x] Verify site loads on mattjrosenberg.com with HTTPS
-- [ ] Cancel Obsidian Publish subscription
+- [x] Cancel Obsidian Publish subscription
 
 ---
 
