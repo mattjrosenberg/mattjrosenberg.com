@@ -4,7 +4,7 @@ date: 2026-02-09
 layout: link-post
 link: https://www.terrygodier.com/phantom-obligation
 tags: []
-summary:
+summary: Is using the inbox as the default 'to-get-to' design paradigm actually a mistake?
 quote: When you dress a new thing in old clothes, people don't just learn the shape. They inherit the feelings, the assumptions, the emotional weight. You can't borrow the layout of an inbox without also borrowing some of its psychology.
 slug: phantom-obligation
 ---
