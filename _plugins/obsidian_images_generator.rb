@@ -25,7 +25,7 @@ class WikiImages < Jekyll::Generator
         alt = CGI.escapeHTML(Regexp.last_match(1))
         src = CGI.escapeHTML(Regexp.last_match(2))
         title = CGI.escapeHTML(Regexp.last_match(3))
-        "<img src=\"#{IMAGE_PATH}#{src}\" alt=\"#{alt}\" title=\"#{title}\">"
+        "<img src=\"#{IMAGE_PATH}#{src}\" alt=\"#{alt}\" title=\"#{title}\" loading=\"lazy\">"
       end
 
       # Obsidian embeds without path: ![[image.png]]
@@ -39,7 +39,7 @@ class WikiImages < Jekyll::Generator
         /x
       ) do
         src = CGI.escapeHTML(Regexp.last_match(1))
-        "<img src=\"#{IMAGE_PATH}#{src}\">"
+        "<img src=\"#{IMAGE_PATH}#{src}\" loading=\"lazy\">"
       end
 
       # Obsidian embeds with explicit path: ![[assets/images/image.png]]
@@ -52,7 +52,7 @@ class WikiImages < Jekyll::Generator
         /x
       ) do
         src = CGI.escapeHTML(Regexp.last_match(1))
-        "<img src=\"#{src}\">"
+        "<img src=\"#{src}\" loading=\"lazy\">"
       end
     end
   end

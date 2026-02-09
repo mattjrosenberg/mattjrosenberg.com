@@ -4,7 +4,7 @@ hide_title: true
 hide_backlinks: true
 ---
 
-![Hero](/assets/images/000555910013.jpg)
+<img src="/assets/images/000555910013.jpg" alt="Hero" loading="eager">
 
 # Matt Rosenberg
 
