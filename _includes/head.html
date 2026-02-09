@@ -60,6 +60,12 @@
     })();
   </script>
 
+  {% if page.title == "welcome" %}
+  <link rel="preload" as="image" type="image/webp"
+    imagesrcset="/assets/images/000555910013-800.webp 800w, /assets/images/000555910013.webp 1600w"
+    imagesizes="(max-width: 768px) 100vw, 720px">
+  {% endif %}
+
   <title>
     {% if page.id == "home" %}
     {{ site.title }}

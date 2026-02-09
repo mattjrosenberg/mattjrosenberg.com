@@ -4,7 +4,7 @@ hide_title: true
 hide_backlinks: true
 ---
 
-<img src="/assets/images/000555910013.jpg" alt="Hero" loading="eager">
+<img src="/assets/images/000555910013.jpg" alt="Hero" loading="eager" data-hero>
 
 # Matt Rosenberg
 

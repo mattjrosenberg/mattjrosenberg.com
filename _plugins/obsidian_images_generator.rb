@@ -54,6 +54,42 @@ class WikiImages < Jekyll::Generator
         src = CGI.escapeHTML(Regexp.last_match(1))
         "<img src=\"#{src}\" loading=\"lazy\">"
       end
+
+      # Pass 4: Wrap <img> tags in <picture> with WebP source
+      doc.content = doc.content.gsub(
+        /<img\s([^>]*src="(\/assets\/images\/[^"]+\.(?:jpg|JPG|jpeg))"[^>]*)>/i
+      ) do
+        full_attrs = Regexp.last_match(1)
+        src = Regexp.last_match(2)
+
+        next "<img #{full_attrs}>" if src.include?('avatar.jpg')
+
+        unless full_attrs.include?('loading=')
+          full_attrs += ' loading="lazy"'
+        end
+
+        webp_src = src.sub(/\.(?:jpg|JPG|jpeg)$/i, '.webp')
+
+        if full_attrs.include?('data-hero')
+          clean_attrs = full_attrs.gsub(/\s*data-hero/, '').strip
+          clean_attrs += ' width="1600" height="1060" fetchpriority="high"'
+          base = src.sub(/\.(?:jpg|JPG|jpeg)$/i, '')
+          ext = src[/\.(?:jpg|JPG|jpeg)$/i]
+
+          "<picture>" \
+            "<source srcset=\"#{base}-800.webp 800w, #{base}.webp 1600w\" " \
+              "sizes=\"(max-width: 768px) 100vw, 720px\" type=\"image/webp\">" \
+            "<source srcset=\"#{base}-800#{ext} 800w, #{base}#{ext} 1600w\" " \
+              "sizes=\"(max-width: 768px) 100vw, 720px\" type=\"image/#{ext.delete('.').downcase}\">" \
+            "<img #{clean_attrs}>" \
+          "</picture>"
+        else
+          "<picture>" \
+            "<source srcset=\"#{webp_src}\" type=\"image/webp\">" \
+            "<img #{full_attrs}>" \
+          "</picture>"
+        end
+      end
     end
   end
 end

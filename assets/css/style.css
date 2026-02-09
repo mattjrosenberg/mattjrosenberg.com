@@ -335,6 +335,14 @@ img {
   border-radius: var(--image-radius);
 }
 
+picture {
+  display: block;
+}
+
+.img-grid picture {
+  width: 100%;
+}
+
 /* ----- Image Grid ----- */
 article img {
   cursor: zoom-in;
