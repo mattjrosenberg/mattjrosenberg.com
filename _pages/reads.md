@@ -12,9 +12,7 @@ permalink: /reads
     <p class="read-meta">
       <span class="link-source">{{ post.link | split: '//' | last | split: '/' | first }}</span>
       &middot;
-      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
-      &middot;
-      <a href="{{ post.url }}" class="read-permalink internal-link">#</a>
+      <a href="{{ post.url }}" class="read-permalink internal-link"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time></a>
     </p>
   </header>
   <div class="read-content">{{ post.content }}</div>

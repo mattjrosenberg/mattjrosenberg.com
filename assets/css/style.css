@@ -493,6 +493,7 @@ blockquote p {
 
 .read-permalink:hover {
   color: var(--text-primary);
+  text-decoration: underline;
 }
 
 .read-content p:first-child {
