@@ -13,8 +13,6 @@ date: <% date %>
 layout: link-post
 link: <% link %>
 tags: []
-summary:
-quote:
 slug: <% slug %>
 ---
 

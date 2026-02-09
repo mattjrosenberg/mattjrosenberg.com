@@ -453,13 +453,54 @@ blockquote p {
   font-size: 0.85em;
 }
 
-.pull-quote {
-  font-size: 1.05em;
-  font-style: italic;
-  border-left: 3px solid var(--border-color);
-  margin: 1em 0;
-  padding: 0.5em 1em;
-  color: var(--text-secondary);
+/* ----- Reads Feed ----- */
+.read-entry {
+  padding: 1.5em 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.read-entry:first-of-type {
+  padding-top: 0;
+}
+
+.read-entry:last-of-type {
+  border-bottom: none;
+}
+
+.read-entry h2 {
+  font-size: 1.25em;
+  margin: 0 0 0.25em;
+}
+
+.read-entry h2 a {
+  text-decoration: none;
+}
+
+.read-entry h2 a:hover {
+  text-decoration: underline;
+}
+
+.read-meta {
+  color: var(--text-faint);
+  font-size: 0.85em;
+  margin: 0 0 0.75em;
+}
+
+.read-permalink {
+  text-decoration: none;
+  color: var(--text-faint);
+}
+
+.read-permalink:hover {
+  color: var(--text-primary);
+}
+
+.read-content p:first-child {
+  margin-top: 0;
+}
+
+.read-content p:last-child {
+  margin-bottom: 0;
 }
 
 /* ----- Callouts (Obsidian-style) ----- */

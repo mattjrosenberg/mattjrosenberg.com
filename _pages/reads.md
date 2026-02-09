@@ -4,13 +4,19 @@ title: reads
 permalink: /reads
 ---
 
-<ul class="archive">
 {% assign link_posts = site.posts | where_exp: "post", "post.link" %}
 {% for post in link_posts %}
-<li>
-  <a href="{{ post.url }}" class="internal-link">{{ post.title }}</a>
-  <span>{{ post.link | split: '//' | last | split: '/' | first }} &middot; {{ post.date | date: "%B %-d, %Y" }}</span>
-  {% if post.summary %}<p>{{ post.summary }}</p>{% endif %}
-</li>
+<article class="read-entry">
+  <header>
+    <h2><a href="{{ post.link }}" target="_blank" rel="noopener">{{ post.title }} &rarr;</a></h2>
+    <p class="read-meta">
+      <span class="link-source">{{ post.link | split: '//' | last | split: '/' | first }}</span>
+      &middot;
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+      &middot;
+      <a href="{{ post.url }}" class="read-permalink internal-link">#</a>
+    </p>
+  </header>
+  <div class="read-content">{{ post.content }}</div>
+</article>
 {% endfor %}
-</ul>

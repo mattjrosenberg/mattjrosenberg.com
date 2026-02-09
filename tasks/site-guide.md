@@ -70,19 +70,17 @@ date: 2026-02-09
 layout: link-post
 link: https://example.com/article
 tags: []
-summary: One-line summary shown on the /reads feed
-quote: A notable passage from the article (rendered as blockquote)
 slug: article-title
 ---
 
-Your commentary here -- a paragraph or two about why this is interesting.
+Your commentary here. Use standard markdown `>` blockquotes
+for passages from the article -- place them wherever they fit.
 ```
 
 - `link` (required): URL to the external article. Triggers the link-post layout and excludes it from the blog feed.
-- `quote` (optional): Rendered as a styled blockquote above your commentary.
-- `summary` (optional): Shown on the `/reads` feed page below the title.
 - The title on the read's own page links out to the external article with an arrow indicator.
 - Source domain is extracted automatically from the URL.
+- The `/reads` feed renders full commentary inline (no click-through needed).
 
 ### Pages (`_pages/`)
 
