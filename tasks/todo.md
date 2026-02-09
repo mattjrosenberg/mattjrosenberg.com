@@ -54,7 +54,7 @@ Migrate mattjrosenberg.com from Obsidian Publish to Jekyll + Netlify for full CS
 
 ## Phase 5: Go Live
 
-- [ ] Final review of all pages on Netlify preview URL
+- [x] Final review of all pages on Netlify preview URL
 - [x] Code simplify plugin run
 - [x] Security review (first pass -- see findings below)
 - [x] Fix all security findings (deps, headers, escaping, DOM XSS)
