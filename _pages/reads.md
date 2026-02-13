@@ -1,7 +1,7 @@
 ---
 layout: page
-title: reads
-permalink: /reads
+title: links
+permalink: /links
 ---
 {% assign read_posts = site.posts | where: "type", "read" %}
 {% for post in read_posts %}
