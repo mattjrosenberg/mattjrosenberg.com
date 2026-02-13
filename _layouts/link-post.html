@@ -3,6 +3,7 @@ layout: default
 ---
 
 <article class="link-post">
+  {% if page.link %}
   <h1><a href="{{ page.link }}" target="_blank" rel="noopener">{{ page.title }} &rarr;</a></h1>
   <header>
     <p>
@@ -11,6 +12,14 @@ layout: default
       <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
     </p>
   </header>
+  {% else %}
+  <h1>{{ page.title }}</h1>
+  <header>
+    <p>
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+    </p>
+  </header>
+  {% endif %}
 
   {{ content }}
 </article>

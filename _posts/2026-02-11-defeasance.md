@@ -2,6 +2,7 @@
 title: Defeasance!
 date: 2026-02-11
 layout: link-post
+type: read
 link: https://www.bloomberg.com/opinion/newsletters/2026-02-11/the-ai-whateverpocalypse-trade
 tags: []
 slug: defeasance

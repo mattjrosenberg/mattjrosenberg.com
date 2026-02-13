@@ -2,7 +2,7 @@
 title: new (good) music
 date: 2026-02-13
 layout: link-post
-link:
+type: read
 tags:
   - new-music
 slug: new-good-music-20260213

@@ -2,6 +2,7 @@
 title: Phantom Obligation
 date: 2026-02-09
 layout: link-post
+type: read
 link: https://www.terrygodier.com/phantom-obligation
 tags: []
 slug: phantom-obligation
