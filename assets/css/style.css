@@ -648,7 +648,9 @@ aside h5 {
   color: var(--text-faint);
   text-decoration: underline;
   text-decoration-style: dashed;
-  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--text-faint);
+  text-underline-offset: 5px;
 }
 
 .invalid-link-brackets {
