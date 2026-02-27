@@ -646,9 +646,13 @@ aside h5 {
 /* ----- Invalid / Unresolved Links ----- */
 .invalid-link {
   color: var(--text-faint);
-  cursor: help;
-  background: var(--callout-bg);
-  padding: 0 0.15em;
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  text-underline-offset: 3px;
+}
+
+.invalid-link-brackets {
+  display: none;
 }
 
 /* ----- Footnotes ----- */

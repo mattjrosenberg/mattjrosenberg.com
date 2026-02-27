@@ -57,7 +57,7 @@ class BidirectionalLinksGenerator < Jekyll::Generator
           #{CODEBLOCK_EXCLUSION}   # exclude codeblocks
         /x,
         <<~HTML.chomp
-          <span title='There is no note that matches this link.' class='invalid-link'>
+          <span class='invalid-link'>
             <span class='invalid-link-brackets'>[[</span>
             \\1
             <span class='invalid-link-brackets'>]]</span></span>
