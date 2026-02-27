@@ -1,0 +1,1 @@
+[For the Love of God, Stop Reserving the Bar](https://lularphelps.substack.com/p/for-the-love-of-god-stop-reserving?utm_campaign=posts-open-in-app&triedRedirect=true)
