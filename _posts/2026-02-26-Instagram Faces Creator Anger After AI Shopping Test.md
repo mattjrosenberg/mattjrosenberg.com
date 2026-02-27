@@ -1,5 +1,5 @@
 ---
-title: x
+title: Instagram Faces Creator Anger After AI Shopping Test
 date: 2026-02-26
 layout: link-post
 type: read
