@@ -9,13 +9,13 @@ slug: new-good-music
 ---
 [Existence is Bliss](https://open.spotify.com/album/6NDqH5ZIddisuPe0z6BuFx?si=iFVvjE3OTdKXCaHbVa5DRA) - [[DEADLETTER]]
 
-I love this. It's a bit theatrical, his voice is so unique and effecting. The writing is really interesting and the production just rules. I can't say more than it's so worth listening to. 
+I love this. It's a bit theatrical, his voice is so unique and affecting. The writing is really interesting and the production just rules. I can't say more than it's so worth listening to. 
 
 →Check out '(Back to) The Scene of the Crime'
 
 [a short history of decay](https://open.spotify.com/album/7euwYFDlezb1aLOvEE4p2P?si=XClLtK9SRrqiZboyS86lyA) - [[Nothing]]
 
-I usually don't find myself vibing with anything described as shoegazer but I really liked how this played with genre and approach. It's much more approachable and broad than bands that put themselves in that genre.
+I usually don't find myself vibing with anything described as [[shoegaze]] but I really liked how this played with genre and approach. It's much more approachable and broad than bands that put themselves in that genre.
 
 →Check out 'essential tremors'
 
