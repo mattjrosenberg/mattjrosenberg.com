@@ -8,6 +8,7 @@ tags: []
 slug: new-good-music
 ---
 [Until You're Satisfied](https://open.spotify.com/album/44XBTJ2FnCtqaQNhNBHNZK?si=W3DUjW3IQyuLtZR4Hp9vPg) - Yonaka
+
 This is so up my alley I can't believe I haven't seen this band a dozen times live. I felt that from the second the first song kicked in. Also, we must accept that the soul of [[Nu-Metal]] still exists. It's so fun and heavy. The right mix of pop-sensible writing that's engaging and excellent vocalizations. There's a ballad in the middle of this! It evolves throughout in ways you'd never expect. What an album.
 
 →Check out 'Miss Millennial'
