@@ -1,5 +1,5 @@
 [build]
-  command = "jekyll build"
+  command = "jekyll build && npx pagefind --site _site"
   publish = "_site"
 
 [build.environment]
