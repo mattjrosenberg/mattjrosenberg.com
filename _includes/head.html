@@ -10,20 +10,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  {% if site.use_html_extension == false %}
-  <link rel="canonical" href="{{ site.url }}{{ page.url }}.html">
+  {% if page.url == "/" %}
+  <link rel="canonical" href="{{ site.url }}/">
+  {% else %}
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}{% if site.use_html_extension %}.html{% endif %}">
   {% endif %}
 
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip | strip_newlines | truncate: 160 }}{% else %}{{ site.title }}{% endif %}">
+  {% assign page_description = page.description | default: page.excerpt | strip_html | strip | strip_newlines | truncate: 160 | default: site.description %}
+  <meta name="description" content="{{ page_description | escape }}">
 
   {% comment %} Open Graph meta tags {% endcomment %}
   <meta property="og:site_name" content="{{ site.title }}">
-
-  {% if page.excerpt %}
-  <meta property="og:description" content="{{ page.excerpt | strip_html | strip_newlines | strip | truncate: 160 }}">
-  {% else %}
-  <meta property="og:description" content="{{ site.title | strip_html | strip_newlines | truncate: 160 }}">
-  {% endif %}
+  <meta property="og:description" content="{{ page_description | escape }}">
 
   {% if page.title %}
   <meta property="og:title" content="{{ page.title | escape }}">
@@ -44,8 +42,51 @@
   <meta property="og:url" content="{{ site.url }}{{ page.url }}{%- if site.use_html_extension -%}.html{%- endif -%}">
   {% endif %}
 
-  {% if page.image %}
-  <meta property="og:image" content="{{ site.url }}{{ page.image }}">
+  {% assign og_image = page.image | default: site.default_image %}
+  {% if og_image %}
+  <meta property="og:image" content="{{ site.url }}{{ og_image }}">
+  <meta property="og:image:alt" content="{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title }}{% endif %}">
+  {% endif %}
+
+  {% comment %} Twitter Card meta tags {% endcomment %}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title }}{% endif %}">
+  <meta name="twitter:description" content="{{ page_description | escape }}">
+  {% if og_image %}
+  <meta name="twitter:image" content="{{ site.url }}{{ og_image }}">
+  <meta name="twitter:image:alt" content="{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title }}{% endif %}">
+  {% endif %}
+
+  {% comment %} JSON-LD structured data {% endcomment %}
+  {% if page.id == "home" %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "{{ site.title }}",
+    "url": "{{ site.url }}",
+    "image": "{{ site.url }}/assets/images/rosenberg_headshot.webp",
+    "description": "{{ site.description }}"
+  }
+  </script>
+  {% elsif page.date %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ page.title | escape }}",
+    "datePublished": "{{ page.date | date_to_xmlschema }}",
+    "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+    "author": {
+      "@type": "Person",
+      "name": "{{ site.title }}",
+      "url": "{{ site.url }}"
+    },
+    "url": "{{ site.url }}{{ page.url }}",
+    "description": "{{ page_description | escape }}"{% if og_image %},
+    "image": "{{ site.url }}{{ og_image }}"{% endif %}
+  }
+  </script>
   {% endif %}
 
   {% comment %} Favicon {% endcomment %}

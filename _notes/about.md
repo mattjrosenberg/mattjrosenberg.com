@@ -1,5 +1,6 @@
 ---
 title: about
+description: "Communications executive with expertise in technology, policy, and media relations. Based in the US, work has taken me from Tokyo to Tel Aviv."
 hide_title: true
 ---
 

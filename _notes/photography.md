@@ -1,5 +1,6 @@
 ---
 title: photography
+description: "Photography from travels across Italy, Paris, NYC, and Tokyo."
 hide_title: true
 hide_backlinks: true
 ---
