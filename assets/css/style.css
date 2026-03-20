@@ -270,13 +270,33 @@ nav {
   transform: rotate(-45deg);
 }
 
+/* ----- Nav Actions (search + theme toggle) ----- */
+.nav-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.search-toggle {
+  display: inline-flex;
+  align-items: center;
+  color: var(--toggle-icon-color);
+  padding: 4px;
+  text-decoration: none;
+}
+
+.search-toggle:hover {
+  color: var(--text-primary);
+  opacity: 1;
+}
+
 /* ----- Theme Toggle (pill switch) ----- */
 .theme-toggle {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   cursor: pointer;
-  margin-left: auto;
   padding: 4px;
   user-select: none;
 }
