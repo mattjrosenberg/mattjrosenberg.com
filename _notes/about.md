@@ -1,6 +1,6 @@
 ---
 title: about
-description: "Communications executive with expertise in technology, policy, and media relations. Based in the US, work has taken me from Tokyo to Tel Aviv."
+description: "Communications executive with expertise in technology, policy, and media relations. Based in the New York City, United States. Has spent a lot of time traveling, working with big and small technology companies and serving in senior leadership for enterprises. Uses this site to write about the technology industry, music, and other topics."
 hide_title: true
 ---
 

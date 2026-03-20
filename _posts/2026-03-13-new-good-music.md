@@ -36,3 +36,5 @@ Bright, retro and catchy. It's a shame to listen to this while at a desk and not
 Love how moody and enveloping this goes. Her voice is something else. There's a good mix of genres and feelings throughout. Or as the bio on Spotify says, 'smoky, psychedelic' which I'm not going to disagree with. 
 
 →Check out 'Bury Me
+
+<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5A0ReWGJWFE9PBw7GOWXEK?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
