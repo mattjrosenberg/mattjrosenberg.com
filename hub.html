@@ -1,0 +1,260 @@
+---
+layout: null
+permalink: /hub/
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Hub — mattjrosenberg.com</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --bg: #fff;
+      --bg-secondary: #f5f5f5;
+      --text: #000;
+      --text-secondary: #555;
+      --text-faint: #999;
+      --border: #000;
+      --border-subtle: #ddd;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #000;
+        --bg-secondary: #111;
+        --text: #fff;
+        --text-secondary: #aaa;
+        --text-faint: #666;
+        --border: #fff;
+        --border-subtle: #333;
+      }
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2em 2em 4em;
+    }
+
+    /* Header */
+    .hub-header {
+      margin-bottom: 3em;
+      padding-bottom: 1.5em;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .site-name {
+      font-size: 1.1em;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.15em;
+    }
+
+    .hub-label {
+      font-size: 0.85em;
+      color: var(--text-faint);
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Password gate */
+    #gate {
+      margin-top: 3em;
+    }
+
+    #gate h2 {
+      font-size: 1.15em;
+      font-weight: 600;
+      margin: 0 0 1em;
+    }
+
+    .password-form {
+      display: flex;
+      gap: 0.75em;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .password-form input[type="password"] {
+      font-family: var(--font);
+      font-size: 1em;
+      color: var(--text);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 0.5em 0.75em;
+      outline: none;
+      width: 220px;
+    }
+
+    .password-form input[type="password"]:focus {
+      border-width: 2px;
+    }
+
+    .password-form button {
+      font-family: var(--font);
+      font-size: 1em;
+      color: var(--bg);
+      background: var(--text);
+      border: 1px solid var(--border);
+      padding: 0.5em 1.25em;
+      cursor: pointer;
+    }
+
+    .password-form button:hover {
+      opacity: 0.75;
+    }
+
+    .error-msg {
+      font-size: 0.85em;
+      color: var(--text-faint);
+      margin-top: 0.75em;
+      display: none;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%       { transform: translateX(-6px); }
+      40%       { transform: translateX(6px); }
+      60%       { transform: translateX(-4px); }
+      80%       { transform: translateX(4px); }
+    }
+
+    .shake {
+      animation: shake 0.35s ease;
+    }
+
+    /* Hub cards */
+    #hub {
+      display: none;
+    }
+
+    #hub h2 {
+      font-size: 1.15em;
+      font-weight: 600;
+      margin: 0 0 1.25em;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1em;
+    }
+
+    @media (max-width: 480px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      display: block;
+      border: 1px solid var(--border);
+      padding: 1.25em 1.5em;
+      text-decoration: none;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    .card:hover {
+      background: var(--bg-secondary);
+      opacity: 1;
+    }
+
+    .card-title {
+      font-size: 1.05em;
+      font-weight: 600;
+      margin: 0 0 0.3em;
+    }
+
+    .card-subtitle {
+      font-size: 0.85em;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hub-header">
+    <p class="site-name">mattjrosenberg.com</p>
+    <p class="hub-label">Admin Hub</p>
+  </header>
+
+  <div id="gate">
+    <h2>Enter password</h2>
+    <form class="password-form" id="passwordForm" autocomplete="off">
+      <input type="password" id="passwordInput" placeholder="Password" autofocus>
+      <button type="submit">Unlock</button>
+    </form>
+    <p class="error-msg" id="errorMsg">Incorrect password.</p>
+  </div>
+
+  <div id="hub">
+    <h2>Tools</h2>
+    <div class="cards">
+      <a class="card" href="/admin">
+        <p class="card-title">Content</p>
+        <p class="card-subtitle">Edit pages, posts &amp; notes</p>
+      </a>
+      <a class="card" href="https://umami-matthew-rosenbergs-projects-f7e24785.vercel.app" target="_blank" rel="noopener">
+        <p class="card-title">Analytics</p>
+        <p class="card-subtitle">Traffic &amp; pageview data</p>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const EXPECTED_HASH = 'bddb5f1a8669320807768a43db1560c8183f2ab43e95d47b08b57e17ed99b895';
+
+    async function sha256(str) {
+      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    function unlock() {
+      document.getElementById('gate').style.display = 'none';
+      document.getElementById('hub').style.display = 'block';
+    }
+
+    if (sessionStorage.getItem('hub_auth') === '1') {
+      unlock();
+    }
+
+    document.getElementById('passwordForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const input = document.getElementById('passwordInput');
+      const hash = await sha256(input.value);
+      if (hash === EXPECTED_HASH) {
+        sessionStorage.setItem('hub_auth', '1');
+        unlock();
+      } else {
+        input.classList.remove('shake');
+        void input.offsetWidth; // reflow to restart animation
+        input.classList.add('shake');
+        input.value = '';
+        const err = document.getElementById('errorMsg');
+        err.style.display = 'block';
+        input.focus();
+      }
+    });
+  </script>
+
+</body>
+</html>
