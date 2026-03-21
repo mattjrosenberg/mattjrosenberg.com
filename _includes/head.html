@@ -8,6 +8,17 @@
   </script>
 
   <script defer src="https://umami-matthew-rosenbergs-projects-f7e24785.vercel.app/script.js" data-website-id="603fcc6c-3cfd-4984-aa59-bab50938e43d"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          var href = link.getAttribute('href');
+          if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
+          window.umami?.track('link-click', { text: link.innerText.trim().slice(0, 50), url: link.href });
+        });
+      });
+    });
+  </script>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
