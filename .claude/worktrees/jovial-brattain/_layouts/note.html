@@ -1,0 +1,33 @@
+---
+layout: default
+---
+
+<article>
+  {% unless page.hide_title %}
+    <h1>{{ page.title }}</h1>
+    {% if page.last_modified_at and page.type != 'pages' %}
+    <header><p><time datetime="{{ page.last_modified_at | date_to_xmlschema }}">Last updated {{ page.last_modified_at | date: "%B %-d, %Y" }}</time>{% if page.category != null %} &ndash; {{ page.category | escape }}{% endif %}</p></header>
+    {% endif %}
+  {% endunless %}
+
+  {{ content }}
+</article>
+
+{% if page.hide_backlinks != true and page.backlinks.size > 0 %}
+<aside>
+  <h5>Notes mentioning this note</h5>
+  {% for backlink in page.backlinks %}
+  <div class="backlink-box">
+    <a class="internal-link" href="{{ backlink.url }}{%- if site.use_html_extension -%}.html{%- endif -%}">{{ backlink.title }}</a>
+    <p>{{ backlink.excerpt | strip_html | truncatewords: 20 }}</p>
+  </div>
+  {% endfor %}
+</aside>
+{% endif %}
+
+<section>
+  {%- if site.show_notes_graph -%}
+  <p>Here are all the notes in this garden, along with their links, visualized as a graph.</p>
+  {% include notes-graph.html %}
+  {%- endif -%}
+</section>
