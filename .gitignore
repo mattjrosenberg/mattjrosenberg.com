@@ -1,6 +1,9 @@
 # Generated website directory
 _site/
 
+# Claude Code worktrees
+.claude/worktrees/
+
 # Jekyll cache & metadata
 .jekyll-cache/
 .jekyll-metadata
