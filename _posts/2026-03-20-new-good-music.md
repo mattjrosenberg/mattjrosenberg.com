@@ -39,7 +39,7 @@ Emo is so back and this is just another shining example. It's just a shame I lis
 
 →Check out 'Weight of the Truth'
 
-[All Dressed Up](https://open.spotify.com/album/2J2A8C4WvbTFyZUYX1cuSr?si=JBmwZgBfStK6UwS5x50d-w) - [Leah Blevins]
+[All Dressed Up](https://open.spotify.com/album/2J2A8C4WvbTFyZUYX1cuSr?si=JBmwZgBfStK6UwS5x50d-w) - [[Leah Blevins]]
 
 Because of my lack of knowledge of this genre, it's unfair to just compare Leah to [[Sierra Ferrell]]. But it's really hard not to. The writing is great, the music MOVES and it's a fun listen. I hope she shows up at [[Newport Folk Festival]] this summer - would love to hear this in the sun with a beer. 
 
