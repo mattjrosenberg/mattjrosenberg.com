@@ -51,4 +51,4 @@ Really good, short punk album. I really enjoyed the energy and noise within this
 
 →Check out 'that was my brain on elves'
 
-[2026-03-20 New This Week Playlist](https://open.spotify.com/playlist/54jy8ymBTpUnHRata091lV?si=411db604605d4ada)
+[2026-03-20 New This Week Mega Playlist](https://open.spotify.com/playlist/54jy8ymBTpUnHRata091lV?si=411db604605d4ada)

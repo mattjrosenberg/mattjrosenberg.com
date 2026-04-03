@@ -37,4 +37,4 @@ Love how moody and enveloping this goes. Her voice is something else. There's a 
 
 →Check out 'Bury Me
 
-[2026-03-13 New This Week Playlist](https://open.spotify.com/playlist/5A0ReWGJWFE9PBw7GOWXEK?si=07080dcde2d14922)
+[2026-03-13 New This Week Mega Playlist](https://open.spotify.com/playlist/5A0ReWGJWFE9PBw7GOWXEK?si=07080dcde2d14922)
