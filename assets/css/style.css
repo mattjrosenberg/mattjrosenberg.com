@@ -769,6 +769,9 @@ ul.archive,
 
   .nav-toggle-label {
     display: block;
+  }
+
+  .nav-actions {
     margin-left: auto;
   }
 
