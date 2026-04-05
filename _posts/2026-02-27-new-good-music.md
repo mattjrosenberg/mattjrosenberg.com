@@ -2,10 +2,8 @@
 title: "new (good) music"
 date: 2026-02-27
 layout: link-post
-type: read
-link: 
+type: music
 tags: []
-slug: new-good-music
 ---
 [Existence is Bliss](https://open.spotify.com/album/6NDqH5ZIddisuPe0z6BuFx?si=iFVvjE3OTdKXCaHbVa5DRA) - [[DEADLETTER]]
 

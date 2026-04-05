@@ -2,10 +2,8 @@
 title: "new (good) music"
 date: 2026-04-03
 layout: link-post
-type: read
-link: 
+type: music
 tags: []
-slug: new-good-music
 ---
 [Birding](https://open.spotify.com/album/4LRV1hTTosrrR7cdWyqyJo?si=XvwKtH7uQom1lYZItCnCtw) - [[deary]]
 

@@ -2,10 +2,8 @@
 title: new (good) music
 date: 2026-02-20
 layout: link-post
-type: read
-link:
+type: music
 tags: []
-slug: new-good-music
 ---
 [Autonomy](https://open.spotify.com/album/31NLkXt7yqS8Ugi7DvkxQm?si=_xEIz4D-RAarB4v8H_l3iA) - [[Stone]]
 

@@ -2,10 +2,8 @@
 title: "new (good) music"
 date: 2026-03-06
 layout: link-post
-type: read
-link: 
+type: music
 tags: []
-slug: new-good-music
 ---
 [Cash Rich](https://open.spotify.com/album/1kyWbqvt4hUrC6tHzuLMHL?si=8H620ZNDS3SU-KU8mEz41w) - [[Snake Eyes]]
 

@@ -2,10 +2,9 @@
 title: new (good) music
 date: 2026-02-13
 layout: link-post
-type: read
+type: music
 tags:
   - new-music
-slug: new-good-music-20260213
 ---
 [Masquerade](https://open.spotify.com/album/29AoeHJhdqdvkZAh7EPoS4?si=9yivMWb3RhynnY79i3pVRA) - [[Cardinals]]
 
