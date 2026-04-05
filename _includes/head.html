@@ -21,7 +21,7 @@
   <link rel="canonical" href="{{ site.url }}{{ page.url }}{% if site.use_html_extension %}.html{% endif %}">
   {% endif %}
 
-  {% assign page_description = page.description | default: page.excerpt | strip_html | strip | strip_newlines | truncate: 160 | default: site.description %}
+  {% assign page_description = page.summary | default: page.description | default: page.excerpt | strip_html | strip | strip_newlines | truncate: 160 | default: site.description %}
   <meta name="description" content="{{ page_description | escape }}">
 
   {% comment %} Open Graph meta tags {% endcomment %}
