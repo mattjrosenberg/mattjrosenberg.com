@@ -3,7 +3,9 @@ layout: page
 title: music
 permalink: /music
 ---
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/64tc1MczjjFQgEFI8v8Vek" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+I write a weekly post about music I've been listening to. I also keep a [running 2026 playlist on Spotify](https://open.spotify.com/playlist/64tc1MczjjFQgEFI8v8Vek).
+
+---
 
 {% assign music_posts = site.posts | where: "type", "music" %}
 {% for post in music_posts %}
