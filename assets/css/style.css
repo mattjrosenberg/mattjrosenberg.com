@@ -767,12 +767,16 @@ ul.archive,
     display: none;
   }
 
+  .site-title {
+    margin-right: auto;
+  }
+
   .nav-toggle-label {
     display: block;
   }
 
   .nav-actions {
-    margin-left: auto;
+    margin-left: 0;
   }
 
   .theme-toggle {
