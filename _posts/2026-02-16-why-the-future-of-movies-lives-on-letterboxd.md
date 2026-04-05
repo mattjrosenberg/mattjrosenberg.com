@@ -2,7 +2,7 @@
 title: Why the Future of Movies Lives on Letterboxd
 date: 2026-02-16
 layout: link-post
-type: read
+type: link
 link: https://www.nytimes.com/interactive/2026/02/03/magazine/letterboxd-film-discussion-site-streaming-movies.html
 tags: []
 slug: why-the-future-of-movies-lives-on-letterboxd

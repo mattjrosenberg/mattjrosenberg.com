@@ -2,7 +2,7 @@
 title: WordPress.com adds an AI Assistant that can edit, adjust styles, create images, and more
 date: 2026-02-17
 layout: link-post
-type: read
+type: link
 link: https://techcrunch.com/2026/02/17/wordpress-com-adds-an-ai-assistant-that-can-edit-adjust-styles-create-images-and-more/
 tags: []
 slug: wordpress-com-adds-an-ai-assistant-that-can-edit-adjust-styles-create-images-and-more

@@ -3,7 +3,7 @@ layout: page
 title: links
 permalink: /links
 ---
-{% assign read_posts = site.posts | where: "type", "read" %}
+{% assign read_posts = site.posts | where: "type", "link" %}
 {% for post in read_posts %}
 <article class="read-entry">
   <header>

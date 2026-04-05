@@ -2,7 +2,7 @@
 title: "Relive the '90s by working in a virtual video store"
 date: 2026-03-19
 layout: link-post
-type: read
+type: link
 link: https://www.popsci.com/technology/video-store-game-retro-rewind/
 tags: []
 slug: relive-the-90s-by-working-in-a-virtual-video-store

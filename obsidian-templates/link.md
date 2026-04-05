@@ -11,9 +11,8 @@ await tp.file.move(`_posts/${filename}`);
 title: "<% title %>"
 date: <% date %>
 layout: link-post
-type: read
+type: link
 link: <% link %>
 tags: []
-slug: <% slug %>
 ---
 

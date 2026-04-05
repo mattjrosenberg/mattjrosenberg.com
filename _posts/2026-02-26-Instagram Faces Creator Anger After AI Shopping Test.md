@@ -2,7 +2,7 @@
 title: Instagram Faces Creator Anger After AI Shopping Test
 date: 2026-02-26
 layout: link-post
-type: read
+type: link
 link: https://www.bloomberg.com/news/newsletters/2026-02-26/instagram-creators-angered-over-shop-the-look-ai-program
 tags: []
 slug: x

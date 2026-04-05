@@ -2,7 +2,7 @@
 title: "For the Love of God, Stop Reserving the Bar"
 date: 2026-02-27
 layout: link-post
-type: read
+type: link
 link: https://lularphelps.substack.com/p/for-the-love-of-god-stop-reserving?utm_campaign=posts-open-in-app&triedRedirect=true
 tags: []
 slug: for-the-love-of-god-stop-reserving-the-bar
