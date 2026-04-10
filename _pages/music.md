@@ -3,7 +3,7 @@ layout: page
 title: music
 permalink: /music
 ---
-I write a weekly post about music I've been listening to. I also keep a [running 2026 playlist on Spotify](https://open.spotify.com/playlist/64tc1MczjjFQgEFI8v8Vek).
+I write a weekly post about new music I've been listening to and liked every Friday. Plus, I'll share some other thoughts as they come. I also keep a [running 2026 playlist of good new songs on Spotify](https://open.spotify.com/playlist/64tc1MczjjFQgEFI8v8Vek).
 
 ---
 
