@@ -28,7 +28,7 @@
     }
 
     function onClick(d) {
-      window.location = d.path;
+      if (d.path) window.location = d.path;
     }
 
     function onMouseover(d) {
@@ -136,6 +136,11 @@
         .enter()
         .append("circle")
         .attr("r", function(d) { return nodeSize[d.id]; })
+        .attr("opacity", function(d) { return d.type === 'reference' ? 0.35 : 1; })
+        .attr("stroke", function(d) { return d.type === 'post' ? "var(--graph-node)" : "none"; })
+        .attr("stroke-width", function(d) { return d.type === 'post' ? 1.5 : 0; })
+        .attr("fill", function(d) { return d.type === 'reference' ? "var(--graph-line)" : "var(--graph-node)"; })
+        .style("cursor", function(d) { return d.path ? "pointer" : "default"; })
         .on("click", onClick)
         .on("mouseover", onMouseover)
         .on("mouseout", onMouseout)
