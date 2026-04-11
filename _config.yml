@@ -1,4 +1,6 @@
 title: Matt Rosenberg
+description: "Communications professional, writer and photographer. Writing about tech, brands, music, and the places I've been."
+default_image: /assets/images/rosenberg_headshot.webp
 url: "https://mattjrosenberg.com"
 
 # https://jekyllrb.com/docs/configuration/options/
@@ -13,11 +15,11 @@ exclude: ["_includes/notes_graph.json", "obsidian-templates", "CLAUDE.md", ".obs
 use_html_extension: false
 
 # Show graph at bottom of notes (hidden for now)
-show_notes_graph: false
+show_notes_graph: true
 
 open_external_links_in_new_tab: true
 
-permalink: /:year/:month/:slug
+permalink: /:year/:month/:day/:slug
 
 page_excerpts: true
 
@@ -47,3 +49,7 @@ defaults:
       path: "_posts/**/*.md"
     values:
       layout: "post"
+  - scope:
+      path: "admin"
+    values:
+      sitemap: false
