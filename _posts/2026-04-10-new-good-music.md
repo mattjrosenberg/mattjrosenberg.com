@@ -28,3 +28,5 @@ There is so much of [[IDLES]] and [[Viagra Boys]] in this and it makes me so hap
 So much to like about this really easy riding rock album. I love that they describe themselves as 'janglers' because it truly is the best word for them. You can feel each guitar strum underneath the very pop rock.
 
 →Check out 'I Didn't Mean to Change My Mind'
+
+[2026-04-10 New This Week Mega Playlist](https://open.spotify.com/playlist/4FYYAVvN5ikIWUCQv2AKAp?si=070084dc55e7452e)
