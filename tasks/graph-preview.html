@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Knowledge Graph Preview</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0d0d0d;
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    #graph {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .node-label-post {
+      fill: #ffffff;
+      font-size: 10px;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .node-label-ref {
+      fill: #aaaaaa;
+      font-size: 9px;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .link {
+      stroke: #555555;
+      stroke-opacity: 0.9;
+      stroke-width: 1px;
+    }
+
+    #legend {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      color: #888888;
+      font-size: 12px;
+      pointer-events: none;
+      line-height: 1.8;
+    }
+
+    #legend .legend-post {
+      color: #ffffff;
+    }
+
+    #legend .legend-ref {
+      color: #666666;
+    }
+
+    #tooltip {
+      position: fixed;
+      background: rgba(20, 20, 20, 0.92);
+      color: #cccccc;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 11px;
+      pointer-events: none;
+      display: none;
+      border: 1px solid #333333;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <svg id="graph"></svg>
+
+  <div id="legend">
+    <div><span class="legend-post">●</span> posts</div>
+    <div><span class="legend-ref">·</span> references</div>
+  </div>
+
+  <div id="tooltip"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <script>
+    const nodes = [
+      // Posts
+      { id: "2026-02-13-music",     label: "new (good) music — Feb 13",   type: "post" },
+      { id: "2026-02-20-music",     label: "new (good) music — Feb 20",   type: "post" },
+      { id: "2026-02-26-instagram", label: "Instagram & AI Shopping",     type: "post" },
+      { id: "2026-02-27-music",     label: "new (good) music — Feb 27",   type: "post" },
+      { id: "2026-03-06-music",     label: "new (good) music — Mar 6",    type: "post" },
+      { id: "2026-03-13-music",     label: "new (good) music — Mar 13",   type: "post" },
+      { id: "2026-03-19-video-store", label: "Relive the 90s Video Store", type: "post" },
+      { id: "2026-03-20-music",     label: "new (good) music — Mar 20",   type: "post" },
+      { id: "2026-03-24-claude",    label: "Claude Code & Cowork",        type: "post" },
+      { id: "2026-03-27-music",     label: "new (good) music — Mar 27",   type: "post" },
+      { id: "2026-04-03-music",     label: "new (good) music — Apr 3",    type: "post" },
+      { id: "2026-04-05-drama",     label: "The Drama",                   type: "post" },
+      { id: "2026-04-10-music",     label: "new (good) music — Apr 10",   type: "post" },
+
+      // References
+      { id: "Cardinals",           label: "Cardinals",           type: "ref" },
+      { id: "Angel Du$t",          label: "Angel Du$t",          type: "ref" },
+      { id: "PONY",                label: "PONY",                type: "ref" },
+      { id: "Remember Sports",     label: "Remember Sports",     type: "ref" },
+      { id: "Converge",            label: "Converge",            type: "ref" },
+      { id: "Stone",               label: "Stone",               type: "ref" },
+      { id: "Oasis",               label: "Oasis",               type: "ref" },
+      { id: "Mumford & Sons",      label: "Mumford & Sons",      type: "ref" },
+      { id: "MAY-A",               label: "MAY-A",               type: "ref" },
+      { id: "Poppy",               label: "Poppy",               type: "ref" },
+      { id: "Toys That Kill",      label: "Toys That Kill",      type: "ref" },
+      { id: "Madi Diaz",           label: "Madi Diaz",           type: "ref" },
+      { id: "Blink-182",           label: "Blink-182",           type: "ref" },
+      { id: "Instagram",           label: "Instagram",           type: "ref" },
+      { id: "DEADLETTER",          label: "DEADLETTER",          type: "ref" },
+      { id: "Nothing",             label: "Nothing",             type: "ref" },
+      { id: "shoegaze",            label: "shoegaze",            type: "ref" },
+      { id: "Iron & Wine",         label: "Iron & Wine",         type: "ref" },
+      { id: "Crooked Fingers",     label: "Crooked Fingers",     type: "ref" },
+      { id: "Sharon Van Etten",    label: "Sharon Van Etten",    type: "ref" },
+      { id: "Snake Eyes",          label: "Snake Eyes",          type: "ref" },
+      { id: "The Brook & The Bluff", label: "The Brook & The Bluff", type: "ref" },
+      { id: "Book of Churches",    label: "Book of Churches",    type: "ref" },
+      { id: "Bon Iver",            label: "Bon Iver",            type: "ref" },
+      { id: "YONAKA",              label: "YONAKA",              type: "ref" },
+      { id: "Nu-Metal",            label: "Nu-Metal",            type: "ref" },
+      { id: "The Scratch",         label: "The Scratch",         type: "ref" },
+      { id: "Dropkick Murphys",    label: "Dropkick Murphys",    type: "ref" },
+      { id: "Anjimile",            label: "Anjimile",            type: "ref" },
+      { id: "Bartees Strange",     label: "Bartees Strange",     type: "ref" },
+      { id: "Cut Worms",           label: "Cut Worms",           type: "ref" },
+      { id: "Ora Cogan",           label: "Ora Cogan",           type: "ref" },
+      { id: "Gladie",              label: "Gladie",              type: "ref" },
+      { id: "VERO",                label: "VERO",                type: "ref" },
+      { id: "grunge",              label: "grunge",              type: "ref" },
+      { id: "indie",               label: "indie",               type: "ref" },
+      { id: "Girl Scout",          label: "Girl Scout",          type: "ref" },
+      { id: "Witch Post",          label: "Witch Post",          type: "ref" },
+      { id: "Footballhead",        label: "Footballhead",        type: "ref" },
+      { id: "Leah Blevins",        label: "Leah Blevins",        type: "ref" },
+      { id: "Sierra Ferrell",      label: "Sierra Ferrell",      type: "ref" },
+      { id: "Newport Folk Festival", label: "Newport Folk Festival", type: "ref" },
+      { id: "Mclusky",             label: "Mclusky",             type: "ref" },
+      { id: "The Twilight Sad",    label: "The Twilight Sad",    type: "ref" },
+      { id: "The Cure",            label: "The Cure",            type: "ref" },
+      { id: "Robert Smith",        label: "Robert Smith",        type: "ref" },
+      { id: "Tigers Jaw",          label: "Tigers Jaw",          type: "ref" },
+      { id: "emo",                 label: "emo",                 type: "ref" },
+      { id: "Snail Mail",          label: "Snail Mail",          type: "ref" },
+      { id: "The Boxer Rebellion", label: "The Boxer Rebellion", type: "ref" },
+      { id: "The Killers",         label: "The Killers",         type: "ref" },
+      { id: "pop",                 label: "pop",                 type: "ref" },
+      { id: "deary",               label: "deary",               type: "ref" },
+      { id: "Charley Crockett",    label: "Charley Crockett",    type: "ref" },
+      { id: "Poison Ruïn",         label: "Poison Ruïn",         type: "ref" },
+      { id: "post-punk",           label: "post-punk",           type: "ref" },
+      { id: "hardcore",            label: "hardcore",            type: "ref" },
+      { id: "Makthaverskan",       label: "Makthaverskan",       type: "ref" },
+      { id: "Zendaya",             label: "Zendaya",             type: "ref" },
+      { id: "Brown Horse",         label: "Brown Horse",         type: "ref" },
+      { id: "Americana",           label: "Americana",           type: "ref" },
+      { id: "Lime Garden",         label: "Lime Garden",         type: "ref" },
+      { id: "Iguana Death Cult",   label: "Iguana Death Cult",   type: "ref" },
+      { id: "IDLES",               label: "IDLES",               type: "ref" },
+      { id: "Viagra Boys",         label: "Viagra Boys",         type: "ref" },
+      { id: "Prism Shores",        label: "Prism Shores",        type: "ref" },
+    ];
+
+    const edges = [
+      // 2026-02-13-music
+      ...["Cardinals", "Angel Du$t", "PONY", "Remember Sports", "Converge"].map(t => ({ source: "2026-02-13-music", target: t })),
+      // 2026-02-20-music
+      ...["Stone", "Oasis", "Mumford & Sons", "MAY-A", "Poppy", "Toys That Kill", "Madi Diaz", "Blink-182"].map(t => ({ source: "2026-02-20-music", target: t })),
+      // 2026-02-26-instagram
+      ...["Instagram"].map(t => ({ source: "2026-02-26-instagram", target: t })),
+      // 2026-02-27-music
+      ...["DEADLETTER", "Nothing", "shoegaze", "Iron & Wine", "Crooked Fingers", "Sharon Van Etten"].map(t => ({ source: "2026-02-27-music", target: t })),
+      // 2026-03-06-music
+      ...["Snake Eyes", "The Brook & The Bluff", "Book of Churches", "Bon Iver"].map(t => ({ source: "2026-03-06-music", target: t })),
+      // 2026-03-13-music
+      ...["YONAKA", "Nu-Metal", "The Scratch", "Dropkick Murphys", "Anjimile", "Bartees Strange", "Cut Worms", "Ora Cogan"].map(t => ({ source: "2026-03-13-music", target: t })),
+      // 2026-03-20-music
+      ...["Gladie", "VERO", "grunge", "indie", "Girl Scout", "Witch Post", "Footballhead", "Leah Blevins", "Sierra Ferrell", "Newport Folk Festival", "Mclusky"].map(t => ({ source: "2026-03-20-music", target: t })),
+      // 2026-03-27-music
+      ...["The Twilight Sad", "The Cure", "Robert Smith", "Tigers Jaw", "emo", "Snail Mail", "The Boxer Rebellion", "The Killers", "pop"].map(t => ({ source: "2026-03-27-music", target: t })),
+      // 2026-04-03-music
+      ...["deary", "Charley Crockett", "Poison Ruïn", "post-punk", "hardcore", "Makthaverskan"].map(t => ({ source: "2026-04-03-music", target: t })),
+      // 2026-04-05-drama
+      ...["Zendaya"].map(t => ({ source: "2026-04-05-drama", target: t })),
+      // 2026-04-10-music
+      ...["Brown Horse", "Americana", "Lime Garden", "Iguana Death Cult", "IDLES", "Viagra Boys", "Prism Shores"].map(t => ({ source: "2026-04-10-music", target: t })),
+    ];
+
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    const svg = d3.select("#graph")
+      .attr("width", width)
+      .attr("height", height);
+
+    // Glow filter for post nodes
+    const defs = svg.append("defs");
+    const filter = defs.append("filter")
+      .attr("id", "glow")
+      .attr("x", "-50%")
+      .attr("y", "-50%")
+      .attr("width", "200%")
+      .attr("height", "200%");
+    filter.append("feGaussianBlur")
+      .attr("stdDeviation", "3.5")
+      .attr("result", "coloredBlur");
+    const feMerge = filter.append("feMerge");
+    feMerge.append("feMergeNode").attr("in", "coloredBlur");
+    feMerge.append("feMergeNode").attr("in", "SourceGraphic");
+
+    // Zoom/pan container
+    const container = svg.append("g").attr("class", "container");
+
+    svg.call(
+      d3.zoom()
+        .scaleExtent([0.2, 5])
+        .on("zoom", (event) => {
+          container.attr("transform", event.transform);
+        })
+    );
+
+    // Build adjacency index for hover highlighting
+    const neighborMap = new Map();
+    const linkSet = new Set();
+
+    nodes.forEach(n => neighborMap.set(n.id, new Set()));
+    edges.forEach(e => {
+      neighborMap.get(e.source).add(e.target);
+      neighborMap.get(e.target).add(e.source);
+      linkSet.add(`${e.source}--${e.target}`);
+      linkSet.add(`${e.target}--${e.source}`);
+    });
+
+    const simulation = d3.forceSimulation(nodes)
+      .force("link", d3.forceLink(edges).id(d => d.id).distance(90).strength(0.5))
+      .force("charge", d3.forceManyBody().strength(-320))
+      .force("center", d3.forceCenter(width / 2, height / 2))
+      .force("collision", d3.forceCollide().radius(d => d.type === "post" ? 18 : 12));
+
+    const link = container.append("g")
+      .attr("class", "links")
+      .selectAll("line")
+      .data(edges)
+      .join("line")
+      .attr("class", "link");
+
+    const nodeGroup = container.append("g")
+      .attr("class", "nodes")
+      .selectAll("g")
+      .data(nodes)
+      .join("g")
+      .attr("class", "node-group")
+      .call(
+        d3.drag()
+          .on("start", dragstarted)
+          .on("drag", dragged)
+          .on("end", dragended)
+      );
+
+    // Circles
+    nodeGroup.append("circle")
+      .attr("r", d => d.type === "post" ? 8 : 5)
+      .attr("fill", d => d.type === "post" ? "#ffffff" : "#666666")
+      .attr("filter", d => d.type === "post" ? "url(#glow)" : null)
+      .style("cursor", d => d.type === "post" ? "pointer" : "default");
+
+    // Labels: always visible for posts, hidden by default for refs
+    nodeGroup.append("text")
+      .attr("class", d => d.type === "post" ? "node-label-post" : "node-label-ref")
+      .attr("text-anchor", "middle")
+      .attr("dy", d => d.type === "post" ? "20px" : "16px")
+      .text(d => d.label)
+      .style("display", d => d.type === "post" ? "block" : "none");
+
+    const tooltip = document.getElementById("tooltip");
+
+    nodeGroup
+      .on("mouseover", function(event, d) {
+        const neighbors = neighborMap.get(d.id);
+
+        // Dim all nodes and links
+        nodeGroup.selectAll("circle")
+          .style("opacity", n => (n.id === d.id || neighbors.has(n.id)) ? 1 : 0.15);
+        nodeGroup.selectAll("text")
+          .style("opacity", n => (n.id === d.id || neighbors.has(n.id)) ? 1 : 0.1);
+
+        link
+          .style("stroke-opacity", e => {
+            const sid = e.source.id || e.source;
+            const tid = e.target.id || e.target;
+            return (sid === d.id || tid === d.id) ? 0.9 : 0.05;
+          })
+          .style("stroke", e => {
+            const sid = e.source.id || e.source;
+            const tid = e.target.id || e.target;
+            return (sid === d.id || tid === d.id) ? "#888888" : "#333333";
+          });
+
+        // Show ref labels for connected refs
+        nodeGroup.filter(n => n.type === "ref").selectAll("text")
+          .style("display", n => neighbors.has(n.id) ? "block" : "none");
+
+        // Tooltip for ref nodes
+        if (d.type === "ref") {
+          tooltip.style.display = "block";
+          tooltip.textContent = d.label;
+        }
+      })
+      .on("mousemove", function(event) {
+        tooltip.style.left = (event.clientX + 14) + "px";
+        tooltip.style.top = (event.clientY - 10) + "px";
+      })
+      .on("mouseout", function(event, d) {
+        // Restore all nodes and links
+        nodeGroup.selectAll("circle").style("opacity", 1);
+        nodeGroup.selectAll("text").style("opacity", 1);
+
+        link
+          .style("stroke-opacity", 0.6)
+          .style("stroke", "#333333");
+
+        // Hide ref labels again
+        nodeGroup.filter(n => n.type === "ref").selectAll("text")
+          .style("display", "none");
+
+        tooltip.style.display = "none";
+      });
+
+    simulation.on("tick", () => {
+      link
+        .attr("x1", d => d.source.x)
+        .attr("y1", d => d.source.y)
+        .attr("x2", d => d.target.x)
+        .attr("y2", d => d.target.y);
+
+      nodeGroup.attr("transform", d => `translate(${d.x},${d.y})`);
+    });
+
+    function dragstarted(event, d) {
+      if (!event.active) simulation.alphaTarget(0.3).restart();
+      d.fx = d.x;
+      d.fy = d.y;
+    }
+
+    function dragged(event, d) {
+      d.fx = event.x;
+      d.fy = event.y;
+    }
+
+    function dragended(event, d) {
+      if (!event.active) simulation.alphaTarget(0);
+      d.fx = null;
+      d.fy = null;
+    }
+
+    window.addEventListener("resize", () => {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      svg.attr("width", w).attr("height", h);
+      simulation.force("center", d3.forceCenter(w / 2, h / 2));
+      simulation.alpha(0.1).restart();
+    });
+  </script>
+</body>
+</html>
