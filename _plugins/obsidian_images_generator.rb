@@ -90,6 +90,39 @@ class WikiImages < Jekyll::Generator
           "</picture>"
         end
       end
+
+      # Pass 5: Wrap consecutive <picture> lines (no blank line between) in img-grid div
+      # A line is a "picture line" only if it starts with <picture> (not indented inside other HTML)
+      lines = doc.content.split("\n", -1)
+      result = []
+      buffer = []
+
+      lines.each do |line|
+        if line.match?(/\A<picture>.*<\/picture>\z/)
+          buffer << line
+        else
+          if buffer.size >= 2
+            result << "<div class=\"img-grid\">"
+            result.concat(buffer)
+            result << "</div>"
+          elsif buffer.size == 1
+            result << buffer[0]
+          end
+          buffer = []
+          result << line
+        end
+      end
+
+      # Flush any remaining buffer
+      if buffer.size >= 2
+        result << "<div class=\"img-grid\">"
+        result.concat(buffer)
+        result << "</div>"
+      elsif buffer.size == 1
+        result << buffer[0]
+      end
+
+      doc.content = result.join("\n")
     end
   end
 end
