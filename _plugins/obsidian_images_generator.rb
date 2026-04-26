@@ -55,6 +55,15 @@ class WikiImages < Jekyll::Generator
         "<img src=\"#{src}\" loading=\"lazy\">"
       end
 
+      # Pass 1b: Handle markdown images with explicit /assets/ path (pass 1 skips these)
+      doc.content = doc.content.gsub(
+        /!\[([^\]]*)\]\((\/assets\/images\/[^)"' ]+\.(?:jpg|JPG|jpeg))[^)]*\)/
+      ) do
+        alt = CGI.escapeHTML(Regexp.last_match(1))
+        src = CGI.escapeHTML(Regexp.last_match(2))
+        "<img src=\"#{src}\" alt=\"#{alt}\" loading=\"lazy\">"
+      end
+
       # Pass 4: Wrap <img> tags in <picture> with WebP source
       doc.content = doc.content.gsub(
         /<img\s([^>]*src="(\/assets\/images\/[^"]+\.(?:jpg|JPG|jpeg))"[^>]*)>/i
