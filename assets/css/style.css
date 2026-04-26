@@ -369,6 +369,13 @@ article img {
   cursor: zoom-in;
 }
 
+/* Two images on the same markdown line display side-by-side */
+article p:has(> picture + picture) {
+  display: flex;
+  gap: var(--img-grid-gap);
+  align-items: center;
+}
+
 .img-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
