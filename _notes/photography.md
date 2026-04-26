@@ -1,6 +1,6 @@
 ---
 title: photography
-description: "Photography from travels across Italy, Paris, NYC, and Tokyo."
+description: "Photography from travels across Italy, Paris, NYC, Tokyo, and Mexico City."
 hide_title: true
 hide_backlinks: true
 ---
@@ -23,5 +23,9 @@ hide_backlinks: true
   <a class="gallery-card internal-link" href="/photography/tokyo">
     <img src="/assets/images/photography/tokyo/toyko_2.jpg" alt="Tokyo">
     <span>Tokyo</span>
+  </a>
+  <a class="gallery-card internal-link" href="/photography/mexico-city">
+    <img src="/assets/images/photography/mexico-city/mexico-city_1.jpg" alt="Mexico City">
+    <span>Mexico City</span>
   </a>
 </div>
