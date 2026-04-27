@@ -7,7 +7,6 @@ How to create and publish content on mattjrosenberg.com from Obsidian.
 - [Vault Setup](#vault-setup)
 - [Content Types](#content-types)
 - [Writing Content](#writing-content)
-- [Creating a Read (Mobile)](#creating-a-read-mobile)
 - [Adding a Photography Gallery](#adding-a-photography-gallery)
 - [Publishing Workflow](#publishing-workflow)
 - [Folders Excluded from Build](#folders-excluded-from-build)
@@ -17,11 +16,12 @@ How to create and publish content on mattjrosenberg.com from Obsidian.
 
 ## Vault Setup
 
-The site repo at `/Users/mrosenberg/mattjrosenberg.com` is an Obsidian vault. Open it as a vault in Obsidian (separate from your main knowledge vault).
+The site repo at `/Users/mrosenberg/Documents - Local/mattjrosenberg.com/` is an Obsidian vault. Open it as a vault in Obsidian (separate from your main knowledge vault).
 
-**Obsidian Git** is installed for commit/push from within Obsidian. You can also use the terminal.
-
-**Templater** is installed for template-driven note creation with prompts, auto-naming, and auto-filing.
+**Community plugins installed:**
+- **Obsidian Git** — commit and push from within Obsidian
+- **Templater** — template-driven note creation with prompts, auto-naming, auto-filing
+- **QuickAdd** — macro execution (e.g. photography image conversion)
 
 ---
 
@@ -43,9 +43,9 @@ favicon:
 
 ### Posts (`_posts/`)
 
-Blog posts. Filename must be `YYYY-MM-DD-slug.md`. URL: `/{year}/{month}/{slug}`
+Blog posts. Filename must be `YYYY-MM-DD-slug.md`. URL: `/{year}/{month}/{day}/{slug}`
 
-Template: `obsidian-templates/post.md`
+Template: `obsidian-templates/post.md` (Templater-powered — auto-renames file)
 
 ```yaml
 ---
@@ -53,49 +53,50 @@ title: My Post
 date: 2026-02-08
 tags: []
 summary:
-slug: my-post
+image:
 ---
 ```
 
-### Reads (`_posts/` with `link` field)
+- `summary` appears under the post title on the blog index
+- `image` sets the header image on the post page and the OG preview image when sharing the link
 
-Link posts for sharing interesting articles with commentary. Same `_posts/` collection as blog posts, differentiated by a `link` frontmatter field. Each read gets its own page and all reads aggregate on `/reads`.
+### Links (`_posts/` with `type: link`)
 
-Template: `obsidian-templates/read.md` (Templater-powered -- see [Creating a Read](#creating-a-read-mobile))
+Link posts for sharing articles with commentary. Aggregate on `/links`.
+
+Template: `obsidian-templates/link.md` (Templater-powered)
 
 ```yaml
 ---
 title: Article Title
 date: 2026-02-09
-layout: link-post
+layout: post
+type: link
 link: https://example.com/article
 tags: []
-slug: article-title
+summary:
 ---
-
-Your commentary here. Use standard markdown `>` blockquotes
-for passages from the article -- place them wherever they fit.
 ```
 
-- `link` (required): URL to the external article. Triggers the link-post layout and excludes it from the blog feed.
-- The title on the read's own page links out to the external article with an arrow indicator.
-- Source domain is extracted automatically from the URL.
-- The `/reads` feed renders full commentary inline (no click-through needed).
+### Music Posts (`_posts/` with `type: music`)
 
-### Pages (`_pages/`)
+Weekly music roundup posts. Aggregate on `/music`. Generated automatically from the main vault via the QuickAdd "Generate Music Post" macro.
 
-Structural pages (archive, blog index). URL: `/{slug}`
-
-Template: `obsidian-templates/page.md`
+Template: `obsidian-templates/music.md`
 
 ```yaml
 ---
-title: my-page
-layout: page
-id:
-favicon:
+title: "new (good) music"
+date: 2026-04-25
+layout: link-post
+type: music
+tags: []
 ---
 ```
+
+### Pages (`_pages/`)
+
+Structural pages (blog index, music index, links index, etc.). URL: `/{slug}`
 
 ---
 
@@ -103,67 +104,41 @@ favicon:
 
 Write normally in Obsidian. The Jekyll plugins handle:
 
-- **Wikilinks**: `[[page-title]]` or `[[page-title|Display Text]]` become HTML links with backlinks
-- **Images without path**: `![alt](photo.jpg)` auto-prefixes `/assets/images/`
+- **Wikilinks**: `[[page-title]]` becomes an HTML link with backlinks tracked
+- **Images (no path)**: `![alt](photo.jpg)` auto-prefixes `/assets/images/`
+- **Images (full path)**: `![alt](/assets/images/...)` processed normally — WebP wrapping and lazy loading applied
 - **Obsidian embeds**: `![[photo.jpg]]` becomes an `<img>` tag
-- **Callouts**: `> [!note] Title` renders as styled callout blocks
+- **WebP wrapping**: all JPEG images get wrapped in `<picture>` with WebP `<source>` automatically
+- **Adjacent images**: two image links on consecutive lines (no blank line) render side-by-side
+- **Full-width images**: a single image line with blank lines before/after renders full width
 - **External links**: automatically open in new tabs
-- **WebP wrapping**: all JPEG `<img>` tags get wrapped in `<picture>` with WebP `<source>` automatically
-
-Images go in `assets/images/`. The plugin adds lazy loading to all images unless `loading="eager"` is set.
 
 ### Important: Raw HTML links
 
-`<a href="/path">` links in raw HTML are **not** clickable inside Obsidian's editor. They only work on the live site. This is a known limitation -- Obsidian only navigates `[[wikilinks]]`.
-
-The photography gallery index uses raw HTML for the card layout, so those links won't navigate in Obsidian. Edit gallery pages by finding them in the file explorer instead.
-
----
-
-## Creating a Read (Mobile)
-
-The `read` template uses Templater to automate file naming and placement. Works on both desktop and mobile.
-
-1. Open command palette, run **Templater: Create new note from template**
-2. Select `read`
-3. Enter the article title when prompted
-4. Enter the article URL when prompted
-5. The file is auto-named `YYYY-MM-DD-slug.md` and moved to `_posts/`
-6. Fill in `summary` and/or `quote` if desired, write your commentary below the frontmatter
-7. Obsidian Sync brings it to desktop; push via Obsidian Git or terminal
-
-The template auto-generates the date, slug, and filename. No manual renaming needed.
+`<a href="/path">` links in raw HTML are not clickable inside Obsidian's editor — they only work on the live site. Photography gallery index cards use raw HTML, so edit those by finding the file in the explorer directly.
 
 ---
 
 ## Adding a Photography Gallery
 
-### 1. Prepare images
+### 1. Prepare the folder and files
 
-Drop images into `assets/images/photography/{name}/` (e.g., `london`).
+- Create a folder: `assets/images/photography/{name}/` — use hyphens, no spaces (e.g. `mexico-city`)
+- Name images: `{name}_1.jpg`, `{name}_2.jpg`, etc. (e.g. `mexico-city_1.jpg`)
+- Drop your JPEGs in
 
-From the terminal, resize and convert:
+### 2. Convert images
 
-```bash
-cd /Users/mrosenberg/mattjrosenberg.com
+Run the **"Convert Photography Images"** QuickAdd macro. It will:
+- Find all JPEGs in `assets/images/photography/` that don't have a matching `.webp`
+- Resize each to 1600px max width
+- Convert to WebP at quality 80
 
-# Resize to 1600px max width and compress
-for f in assets/images/photography/{name}/*.{jpg,JPG,jpeg}; do
-  sips --resampleWidth 1600 "$f"
-  sips -s formatOptions 80 "$f"
-done
+No terminal needed.
 
-# Convert to WebP
-for f in assets/images/photography/{name}/*.{jpg,JPG,jpeg}; do
-  cwebp -q 80 "$f" -o "${f%.*}.webp"
-done
-```
+### 3. Create the gallery page
 
-### 2. Create the gallery page
-
-Use the `photography-gallery` template (Insert template > photography-gallery) or create manually:
-
-**File:** `_notes/photography/{name}.md`
+Use the `photography-gallery` Obsidian template or create `_notes/photography/{name}.md` manually:
 
 ```markdown
 ---
@@ -177,23 +152,18 @@ hide_backlinks: true
 
 ![London 1](/assets/images/photography/london/london_1.jpg)
 
-<div class="img-grid">
-  <img src="/assets/images/photography/london/london_2.jpg" alt="London 2">
-  <img src="/assets/images/photography/london/london_3.jpg" alt="London 3">
-</div>
+![London 2](/assets/images/photography/london/london_2.jpg)
+![London 3](/assets/images/photography/london/london_3.jpg)
 
-<div class="img-grid">
-  <img src="/assets/images/photography/london/london_4.jpg" alt="London 4">
-  <img src="/assets/images/photography/london/london_5.jpg" alt="London 5">
-</div>
+![London 4](/assets/images/photography/london/london_4.jpg)
 ```
 
-- First image: full width (plain markdown)
-- Subsequent images: pairs in `<div class="img-grid">` for side-by-side
-- Odd number of images: last one can go solo or in its own grid div
-- The plugin auto-wraps all `<img>` tags in `<picture>` with WebP sources and lazy loading
+**Layout rules:**
+- Single image with blank lines before/after → full width
+- Two images on consecutive lines (no blank line between) → side by side
+- The plugin auto-groups pairs and wraps them — no `<div class="img-grid">` needed
 
-### 3. Add to the gallery index
+### 4. Add a card to the gallery index
 
 Edit `_notes/photography.md` and add inside the `<div class="gallery-index">` block:
 
@@ -204,37 +174,40 @@ Edit `_notes/photography.md` and add inside the `<div class="gallery-index">` bl
 </a>
 ```
 
-### 4. Commit and push
+### 5. Commit and push
 
 ---
 
 ## Publishing Workflow
 
 1. Write or edit content in Obsidian
-2. Commit and push (via Obsidian Git or terminal)
-3. Netlify auto-builds and deploys on push
+2. Commit and push via Obsidian Git (or terminal)
+3. Netlify auto-builds and deploys on push (~60 seconds)
+
+**Protected files** (`_config.yml`, `netlify.toml`) have `skip-worktree` set so Obsidian Git won't overwrite them. To change them, edit and commit manually via terminal.
 
 ---
 
 ## Folders Excluded from Build
 
-These exist in the vault but are **not** published to the live site:
+These exist in the vault but are not published to the live site:
 
-- `.obsidian/` -- Obsidian config and plugins
-- `obsidian-templates/` -- templates for new content
-- `tasks/` -- project task files (including this guide)
-- `CLAUDE.md` -- project instructions (if created)
-
-Everything else is built and deployed.
+- `.obsidian/` — Obsidian config and plugins
+- `.claude/` — Claude Code worktrees (hidden from Obsidian file explorer)
+- `obsidian-templates/` — templates for new content
+- `tasks/` — project files, scripts, and this guide
+- `vendor/` — Ruby gem dependencies (hidden from Obsidian file explorer)
+- `_site/` — Jekyll build output, auto-generated (hidden from Obsidian file explorer)
 
 ---
 
 ## Image Handling Summary
 
-| What you write | What the plugin does |
+| What you write | What happens |
 |---|---|
-| `![alt](photo.jpg)` | Adds `/assets/images/` path, lazy loading, `<picture>` + WebP |
-| `![[photo.jpg]]` | Converts embed to `<img>`, adds path, lazy loading, `<picture>` + WebP |
-| `<img src="/assets/images/..." ...>` | Wraps in `<picture>` + WebP, adds lazy loading if missing |
-| `data-hero` attribute on `<img>` | Responsive hero with 800w/1600w srcset, fetchpriority="high" |
-| `avatar.jpg` | Skipped (no WebP wrapping) |
+| `![alt](photo.jpg)` | Plugin adds `/assets/images/` prefix, lazy loading, `<picture>` + WebP |
+| `![alt](/assets/images/photo.jpg)` | Plugin adds lazy loading, `<picture>` + WebP |
+| `![[photo.jpg]]` | Plugin converts to `<img>`, adds path, lazy loading, `<picture>` + WebP |
+| Two image lines, no blank line | Plugin auto-wraps both in `<div class="img-grid">` (side-by-side) |
+| `data-hero` on `<img>` | Responsive hero with 800w/1600w srcset, fetchpriority="high" |
+| `avatar.jpg` | Skipped — no WebP wrapping |
