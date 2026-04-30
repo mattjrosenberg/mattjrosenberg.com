@@ -20,6 +20,6 @@ Kyle Chayka's [piece on taste](https://www.newyorker.com/culture/infinite-scroll
 
 I spend a lot of time talking to tech companies - it is quite literally my day job. My whole career, I have tried to emphasize the importance of centering the human experience when talking about technology. People don't care about the spec sheets as much as they care what the technology will do for them, how it'll make them feel, and how it'll make their lives better. I'll spare you the 'what this pop concert means for B2B tech marketing' take — but come on.
 
-Hell, I'm writing this while waiting to get into a room where my company and I are hosting an in-person event. While I'm sucking down coffee because it's before 7 am and I've been up for hours already it excites me to be in person. And if our events go like they do, we won't see a lot of phones. 
+Hell, I'm writing this while waiting to get into a room where my company and I are hosting an in-person event. While I'm sucking down coffee because it's before 7 am and I've been up for hours already - it excites me to be here with people. And, if our events go like they usually do, we won't see a lot of phones. 
 
 Now to go play [Seven Devils](https://open.spotify.com/track/5qaLfqAUiqvsoL0l4T05Yx?si=DXFaF38-S9OW-jMBgbhSIw&context=spotify%3Aplaylist%3A37i9dQZF1DZ06evO0KiRk4).
