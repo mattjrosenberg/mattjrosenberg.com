@@ -3,6 +3,8 @@ title: Put your phone away
 date: 2026-04-30
 slug: no-phones-at-concerts
 layout: post
+summary: At two different concerns, the artists asked for phones to put away. I
+  don't think it was a coincidence.
 ---
 At two concerts this weekend, something interesting happened. I've been to hundreds of shows and I've maybe seen this once. Both artists, right before their biggest song, told everyone to put their phones away to enjoy the moment. 
 
