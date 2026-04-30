@@ -1,5 +1,5 @@
 ---
-title: Put your phone awaay
+title: Put your phone away
 date: 2026-04-30
 slug: no-phones-at-concerts
 layout: post
