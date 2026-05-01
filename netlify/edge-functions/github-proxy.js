@@ -1,5 +1,6 @@
 const GITHUB_API = "https://api.github.com";
 const PATH_PREFIX = "/github-proxy/github";
+const REPO = "mattjrosenberg/mattjrosenberg.com";
 
 export default async (request) => {
   const githubToken = Deno.env.get("GITHUB_PAT");
@@ -30,7 +31,10 @@ export default async (request) => {
   }
 
   // All other requests: proxy to GitHub API
-  const githubPath = url.pathname.replace(PATH_PREFIX, "") || "/";
+  // Decap CMS's git-gateway backend omits the repo from paths — the real
+  // git-gateway knows which repo from Netlify's config. We inject it here.
+  const strippedPath = url.pathname.replace(PATH_PREFIX, "") || "/";
+  const githubPath = injectRepo(strippedPath);
   const githubUrl = `${GITHUB_API}${githubPath}${url.search}`;
 
   const body =
@@ -61,6 +65,14 @@ export default async (request) => {
     },
   });
 };
+
+// Git-gateway omits /repos/{owner}/{repo} from paths — inject it for all
+// repo-scoped endpoints. Non-repo endpoints like /user pass through unchanged.
+function injectRepo(path) {
+  if (path === "/user" || path.startsWith("/user/")) return path;
+  if (path.startsWith("/repos/")) return path;
+  return `/repos/${REPO}${path}`;
+}
 
 // Validates a Netlify Identity JWT: checks structure, expiry, and that a
 // subject claim exists. Does not verify the cryptographic signature —
