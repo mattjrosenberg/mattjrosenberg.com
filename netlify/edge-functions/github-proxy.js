@@ -29,20 +29,21 @@ async function handleRequest(request) {
     return new Response(null, { status: 204, headers: corsHeaders() });
   }
 
-  // Validate Netlify Identity JWT
-  const authHeader = request.headers.get("Authorization") || "";
-  if (!authHeader.startsWith("Bearer ") || !isValidJWT(authHeader.slice(7))) {
-    return jsonResponse({ error: "Unauthorized" }, 401);
-  }
-
   const url = new URL(request.url);
 
-  // Handle git-gateway's own /settings handshake — tells Decap CMS GitHub is enabled
+  // Handle git-gateway's own /settings handshake — tells Decap CMS GitHub is enabled.
+  // This is called at init time before the user logs in, so it must be public.
   if (url.pathname === "/github-proxy/settings") {
     return jsonResponse(
       { github_enabled: true, gitlab_enabled: false, bitbucket_enabled: false, roles: [] },
       200
     );
+  }
+
+  // Validate Netlify Identity JWT for all GitHub API requests
+  const authHeader = request.headers.get("Authorization") || "";
+  if (!authHeader.startsWith("Bearer ") || !isValidJWT(authHeader.slice(7))) {
+    return jsonResponse({ error: "Unauthorized" }, 401);
   }
 
   // All other requests: proxy to GitHub API
