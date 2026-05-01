@@ -1,9 +1,6 @@
 backend:
-  name: github
-  repo: mattjrosenberg/mattjrosenberg.com
+  name: git-gateway
   branch: main
-  auth_type: pkce
-  app_id: Ov23liXA2ByZEHo24G45
 
 media_folder: "assets/images"
 public_folder: "/assets/images"
