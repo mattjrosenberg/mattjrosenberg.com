@@ -1,6 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: mattjrosenberg/mattjrosenberg.com
   branch: main
+  auth_type: pkce
+  app_id: Ov23liXA2ByZEHo24G45
 
 media_folder: "assets/images"
 public_folder: "/assets/images"
@@ -24,10 +27,11 @@ collections:
       - label: "Type"
         name: "type"
         widget: "select"
-        options: ["read", "watch", "listen"]
+        options: ["link", "music"]
         required: false
       - { label: "Link", name: "link", widget: "string", required: false }
       - { label: "Summary", name: "summary", widget: "string", required: false }
+      - { label: "Image", name: "image", widget: "image", required: false }
       - label: "Tags"
         name: "tags"
         widget: "list"
