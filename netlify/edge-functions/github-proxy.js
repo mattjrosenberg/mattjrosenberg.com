@@ -3,6 +3,21 @@ const PATH_PREFIX = "/github-proxy/github";
 const REPO = "mattjrosenberg/mattjrosenberg.com";
 
 export default async (request) => {
+  // Top-level catch ensures we always return a CORS-headered response — even
+  // on crashes. Without this, an unhandled throw produces a Netlify error page
+  // with no CORS headers, which the browser reports as "Failed to fetch".
+  try {
+    return await handleRequest(request);
+  } catch (err) {
+    console.error(`[github-proxy] Unhandled error: ${err}`);
+    return new Response(JSON.stringify({ error: String(err) }), {
+      status: 500,
+      headers: { "Content-Type": "application/json", ...corsHeaders() },
+    });
+  }
+};
+
+async function handleRequest(request) {
   const githubToken = Deno.env.get("GITHUB_PAT");
 
   if (!githubToken) {
@@ -39,9 +54,9 @@ export default async (request) => {
 
   const hasBody = !["GET", "HEAD"].includes(request.method);
 
-  // Read body as text — the payload is always JSON (base64 string inside an
-  // object), so text is the right type and avoids streaming compatibility issues.
-  const body = hasBody ? await request.text() : undefined;
+  // Read body as an ArrayBuffer to forward the raw bytes unchanged.
+  // This avoids any text encoding round-trip and works for both JSON and binary.
+  const body = hasBody ? await request.arrayBuffer() : undefined;
 
   const githubResponse = await fetch(githubUrl, {
     method: request.method,
@@ -56,6 +71,12 @@ export default async (request) => {
 
   const responseBody = await githubResponse.arrayBuffer();
 
+  if (!githubResponse.ok) {
+    console.error(
+      `[github-proxy] ${request.method} ${githubPath} -> ${githubResponse.status}: ${new TextDecoder().decode(responseBody)}`
+    );
+  }
+
   return new Response(responseBody, {
     status: githubResponse.status,
     headers: {
@@ -64,7 +85,7 @@ export default async (request) => {
       ...corsHeaders(),
     },
   });
-};
+}
 
 // Git-gateway omits /repos/{owner}/{repo} from paths — inject it for all
 // repo-scoped endpoints. Non-repo endpoints like /user pass through unchanged.
