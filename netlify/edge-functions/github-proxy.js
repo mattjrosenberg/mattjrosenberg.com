@@ -37,21 +37,26 @@ export default async (request) => {
   const githubPath = injectRepo(strippedPath);
   const githubUrl = `${GITHUB_API}${githubPath}${url.search}`;
 
-  const body =
-    ["GET", "HEAD"].includes(request.method)
-      ? undefined
-      : await request.arrayBuffer();
+  const hasBody = !["GET", "HEAD"].includes(request.method);
+
+  const forwardHeaders = {
+    Authorization: `token ${githubToken}`,
+    Accept: "application/vnd.github.v3+json",
+    "User-Agent": "mattjrosenberg-cms/1.0",
+    "Content-Type": request.headers.get("Content-Type") || "application/json",
+  };
+
+  // Forward Content-Length if present so GitHub knows the payload size
+  const contentLength = request.headers.get("Content-Length");
+  if (hasBody && contentLength) forwardHeaders["Content-Length"] = contentLength;
 
   const githubResponse = await fetch(githubUrl, {
     method: request.method,
-    headers: {
-      Authorization: `token ${githubToken}`,
-      Accept: "application/vnd.github.v3+json",
-      "User-Agent": "mattjrosenberg-cms/1.0",
-      "Content-Type":
-        request.headers.get("Content-Type") || "application/json",
-    },
-    body,
+    headers: forwardHeaders,
+    // Stream the body directly rather than buffering — avoids memory limits
+    // on large payloads like base64-encoded images
+    body: hasBody ? request.body : undefined,
+    duplex: "half",
   });
 
   const responseBody = await githubResponse.arrayBuffer();
