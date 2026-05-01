@@ -54,9 +54,9 @@ export default async (request) => {
     method: request.method,
     headers: forwardHeaders,
     // Stream the body directly rather than buffering — avoids memory limits
-    // on large payloads like base64-encoded images
+    // on large payloads like base64-encoded images. Deno supports ReadableStream
+    // bodies natively; do not pass duplex which is Node.js-only.
     body: hasBody ? request.body : undefined,
-    duplex: "half",
   });
 
   const responseBody = await githubResponse.arrayBuffer();
