@@ -5,6 +5,10 @@
 [build.environment]
   RUBY_VERSION = "3.3.6"
 
+[[edge_functions]]
+  function = "github-proxy"
+  path = "/github-proxy/*"
+
 [[headers]]
   for = "/*"
   [headers.values]
