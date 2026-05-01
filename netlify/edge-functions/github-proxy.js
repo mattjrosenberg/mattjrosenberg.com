@@ -39,24 +39,19 @@ export default async (request) => {
 
   const hasBody = !["GET", "HEAD"].includes(request.method);
 
-  const forwardHeaders = {
-    Authorization: `token ${githubToken}`,
-    Accept: "application/vnd.github.v3+json",
-    "User-Agent": "mattjrosenberg-cms/1.0",
-    "Content-Type": request.headers.get("Content-Type") || "application/json",
-  };
-
-  // Forward Content-Length if present so GitHub knows the payload size
-  const contentLength = request.headers.get("Content-Length");
-  if (hasBody && contentLength) forwardHeaders["Content-Length"] = contentLength;
+  // Read body as text — the payload is always JSON (base64 string inside an
+  // object), so text is the right type and avoids streaming compatibility issues.
+  const body = hasBody ? await request.text() : undefined;
 
   const githubResponse = await fetch(githubUrl, {
     method: request.method,
-    headers: forwardHeaders,
-    // Stream the body directly rather than buffering — avoids memory limits
-    // on large payloads like base64-encoded images. Deno supports ReadableStream
-    // bodies natively; do not pass duplex which is Node.js-only.
-    body: hasBody ? request.body : undefined,
+    headers: {
+      Authorization: `token ${githubToken}`,
+      Accept: "application/vnd.github.v3+json",
+      "User-Agent": "mattjrosenberg-cms/1.0",
+      "Content-Type": request.headers.get("Content-Type") || "application/json",
+    },
+    body,
   });
 
   const responseBody = await githubResponse.arrayBuffer();
