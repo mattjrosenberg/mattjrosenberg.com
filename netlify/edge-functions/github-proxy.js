@@ -19,12 +19,20 @@ export default async (request) => {
     return jsonResponse({ error: "Unauthorized" }, 401);
   }
 
-  // Build GitHub API URL by stripping our proxy prefix
   const url = new URL(request.url);
+
+  // Handle git-gateway's own /settings handshake — tells Decap CMS GitHub is enabled
+  if (url.pathname === "/github-proxy/settings") {
+    return jsonResponse(
+      { github_enabled: true, gitlab_enabled: false, bitbucket_enabled: false, roles: [] },
+      200
+    );
+  }
+
+  // All other requests: proxy to GitHub API
   const githubPath = url.pathname.replace(PATH_PREFIX, "") || "/";
   const githubUrl = `${GITHUB_API}${githubPath}${url.search}`;
 
-  // Forward request body for non-GET methods
   const body =
     ["GET", "HEAD"].includes(request.method)
       ? undefined
@@ -54,8 +62,9 @@ export default async (request) => {
   });
 };
 
-// Basic JWT validation: checks structure, expiry, and Netlify issuer.
-// Does not verify the cryptographic signature — sufficient for a personal blog.
+// Validates a Netlify Identity JWT: checks structure, expiry, and that a
+// subject claim exists. Does not verify the cryptographic signature —
+// sufficient for a personal blog.
 function isValidJWT(token) {
   try {
     const parts = token.split(".");
@@ -65,7 +74,7 @@ function isValidJWT(token) {
       atob(pad(parts[1].replace(/-/g, "+").replace(/_/g, "/")))
     );
     if (payload.exp && Date.now() / 1000 > payload.exp) return false;
-    if (!payload.iss?.includes("netlify")) return false;
+    if (!payload.sub) return false;
     return true;
   } catch {
     return false;
