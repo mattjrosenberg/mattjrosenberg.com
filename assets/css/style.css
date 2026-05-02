@@ -369,6 +369,21 @@ article img {
   cursor: zoom-in;
 }
 
+figure {
+  margin: 1.5em 0;
+}
+
+figure img {
+  width: 100%;
+}
+
+figcaption {
+  margin-top: 0.4em;
+  font-size: 0.8em;
+  color: var(--text-faint);
+  line-height: 1.4;
+}
+
 
 .img-grid {
   display: grid;
