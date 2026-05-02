@@ -6,6 +6,8 @@ layout: post
 summary: At two different concerns, the artists asked for phones to put away. I
   don't think it was a coincidence.
 ---
+![](/assets/images/img_1377.jpg)
+
 At two concerts this weekend, something interesting happened. I've been to hundreds of shows and I've maybe seen this once. Both artists, right before their biggest song, told everyone to put their phones away to enjoy the moment. 
 
 These two artists, Florence + the Machine and The Last Dinner Party, have a lot to do with each other musically but come from different generations. However, before playing Nothing Matters for the latter and Dog Days Are Over for the former - the song of my generation - they asked everyone to be in the moment. 
