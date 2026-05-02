@@ -1,7 +1,7 @@
 backend:
   name: git-gateway
   branch: main
-  gateway_url: https://verdant-centaur-826f6d.netlify.app/github-proxy
+  gateway_url: /github-proxy
 
 media_folder: "assets/images"
 public_folder: "/assets/images"
