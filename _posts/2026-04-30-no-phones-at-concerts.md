@@ -6,7 +6,10 @@ layout: post
 summary: At two different concerns, the artists asked for phones to put away. I
   don't think it was a coincidence.
 ---
-![](/assets/images/img_1377.jpg)
+<figure>
+  <img src="/assets/images/img_1377.jpg" alt="Description">
+  <figcaption>Taken well before phones were requested to be stowed.</figcaption>
+</figure>
 
 At two concerts this weekend, something interesting happened. I've been to hundreds of shows and I've maybe seen this once. Both artists, right before their biggest song, told everyone to put their phones away to enjoy the moment. 
 
