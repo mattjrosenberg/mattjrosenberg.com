@@ -30,6 +30,7 @@ collections:
       - { label: "Link", name: "link", widget: "string", required: false }
       - { label: "Summary", name: "summary", widget: "string", required: false }
       - { label: "Image", name: "image", widget: "image", required: false }
+      - { label: "Image Caption", name: "image_caption", widget: "string", required: false }
       - label: "Tags"
         name: "tags"
         widget: "list"

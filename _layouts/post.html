@@ -7,7 +7,10 @@ layout: default
   <header><p><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time></p></header>
 
   {% if page.image %}
-  <img src="{{ page.image }}" alt="{{ page.title }}">
+  <figure>
+    <img src="{{ page.image }}" alt="{{ page.title }}">
+    {% if page.image_caption %}<figcaption>{{ page.image_caption }}</figcaption>{% endif %}
+  </figure>
   {% endif %}
 
   {{ content }}

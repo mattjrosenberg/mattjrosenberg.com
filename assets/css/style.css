@@ -384,6 +384,16 @@ figcaption {
   line-height: 1.4;
 }
 
+/* Italic text immediately after an inline image acts as a caption */
+article p > img + em {
+  display: block;
+  margin-top: 0.4em;
+  font-size: 0.8em;
+  font-style: normal;
+  color: var(--text-faint);
+  line-height: 1.4;
+}
+
 
 .img-grid {
   display: grid;
