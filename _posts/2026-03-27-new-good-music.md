@@ -3,6 +3,7 @@ title: "new (good) music"
 date: 2026-03-27
 layout: link-post
 type: music
+image: /assets/images/music-2026-03-27.jpg
 tags: []
 ---
 [IT'S THE LONG GOODBYE](https://open.spotify.com/album/2VDn7Y8xO8c09edBK3waKj?si=6jctijHwSHGG8zAe2FaWPQ) -  [[The Twilight Sad]]

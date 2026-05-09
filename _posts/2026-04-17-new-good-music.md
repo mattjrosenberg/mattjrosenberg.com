@@ -3,6 +3,7 @@ title: new (good) music
 date: 2026-04-17
 layout: link-post
 type: music
+image: /assets/images/music-2026-04-17.jpg
 tags: []
 ---
 [Carve](https://open.spotify.com/album/6yvVX20gPe9oQtvQZmmI8Z?si=4WLqdzgqRsu2Meba0u1n3A) - [[Kathryn Mohr]]

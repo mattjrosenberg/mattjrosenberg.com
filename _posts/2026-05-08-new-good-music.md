@@ -3,6 +3,7 @@ title: "new (good) music"
 date: 2026-05-08
 layout: link-post
 type: music
+image: /assets/images/music-2026-05-08.jpg
 tags: []
 ---
 

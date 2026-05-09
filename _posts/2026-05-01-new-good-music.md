@@ -3,6 +3,7 @@ title: "new (good) music"
 date: 2026-05-01
 layout: link-post
 type: music
+image: /assets/images/music-2026-05-01.jpg
 tags: []
 ---
 [Hoopla](https://open.spotify.com/album/4OmO1a6jKotWwguSeQzLBa?si=MXYSUv3MSSGR85yyHruOFg) - [[Weird Nightmare]]

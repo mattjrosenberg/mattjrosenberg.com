@@ -3,6 +3,7 @@ title: "new (good) music"
 date: 2026-04-24
 layout: link-post
 type: music
+image: /assets/images/music-2026-04-24.jpg
 tags: []
 ---
 [The Great Divide](https://open.spotify.com/album/2fnkyn9EybagIoFJ7a13oz?si=5nPTtRLJRxiSBB1OnbEcgA) - [[Noah Kahan]]
