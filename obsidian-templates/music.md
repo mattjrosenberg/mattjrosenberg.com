@@ -9,6 +9,7 @@ title: "new (good) music"
 date: <% date %>
 layout: link-post
 type: music
+image: ""
 tags: []
 ---
 

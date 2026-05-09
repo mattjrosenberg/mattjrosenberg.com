@@ -3,7 +3,7 @@ title: "new (good) music"
 date: 2026-03-20
 layout: link-post
 type: music
-image: /assets/images/music-2026-03-20.jpg
+image: /assets/images/music-2026-03-20.webp
 tags: []
 ---
 

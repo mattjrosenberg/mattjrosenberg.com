@@ -3,7 +3,7 @@ title: new (good) music
 date: 2026-03-13
 layout: link-post
 type: music
-image: /assets/images/music-2026-03-13.jpg
+image: /assets/images/music-2026-03-13.webp
 tags: []
 ---
 [Until You're Satisfied](https://open.spotify.com/album/44XBTJ2FnCtqaQNhNBHNZK?si=W3DUjW3IQyuLtZR4Hp9vPg) - [[YONAKA]]

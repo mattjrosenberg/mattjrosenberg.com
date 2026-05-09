@@ -3,7 +3,7 @@ title: "new (good) music"
 date: 2026-04-10
 layout: link-post
 type: music
-image: /assets/images/music-2026-04-10.jpg
+image: /assets/images/music-2026-04-10.webp
 tags: []
 ---
 [Total Dive](https://open.spotify.com/album/0mD4ce9upIZkxeSCPt7z6Q?si=jMIr684aQtipC8BUtPNxFA) - [[Brown Horse]]
