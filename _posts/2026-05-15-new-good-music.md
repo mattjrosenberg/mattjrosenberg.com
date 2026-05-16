@@ -47,3 +47,5 @@ An incredibly earnest effort. There is a consistent heartbeat throughout each so
 It's a folk album from Kevin Morby! It's really good. It moves, has considered writing that is put excellently against bouncy, rhythmic guitars, and other strings.
 
 →Check out 'I Ride Passenger'
+
+[2026-05-15 New This Week Mega Playlist](https://open.spotify.com/playlist/2ojoiRpRMUAcTt0vHZD5DW?si=f2cbaeb27a884f20)
