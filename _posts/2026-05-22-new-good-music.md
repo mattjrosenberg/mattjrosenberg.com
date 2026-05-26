@@ -30,4 +30,10 @@ So upsetting to hear this has been sitting on a shelf for a few years because of
 
 →Check out 'Coyote'
 
+[Looking for People to Unfollow](https://open.spotify.com/album/6S7mwrc4FXlG4MmuBaDGAA?si=VPhxVnTJTByM-N9bgYXCFw) - [[Ecca Vandal]]
+
+This was an incredibly cool album. Raw, edgy and really funny. Really appreciate its ability to stay fresh and keep me o  n my toes throughout it while blending punk rock and pop sensibilities together (though, not a pop punk album). Frankly, tough to pick one song to feature because the whole album is worth the play.
+
+→Check out 'CRUISING TO SELF SOOTHE'
+
 [2026-05-22 New This Week Mega Playlist](https://open.spotify.com/playlist/30gdgj2aQtptOllLNYssxl?si=623dae8f82ff45e6)
