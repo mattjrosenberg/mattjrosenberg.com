@@ -14,10 +14,20 @@ New York, NY ·[linkedin.com/in/mattjrosenberg](https://linkedin.com/in/mattjros
 Experienced public relations and communications executive specializing in technology, policy, and media relations. I excel at translating complex tech products into clear, compelling messaging for diverse audiences, and have served as spokesperson for large, publicly traded companies. With deep expertise in crisis management, executive communications, and integrated campaigns, I drive measurable results across global markets. My background includes leading teams and agency partners, shaping policy narratives, mitigating reputation risk, and executing strategies that grow audiences and brand value. I bring a media-agnostic, data-driven approach to building influence, securing top-tier coverage, and advancing business goals.
 
 ## PROFESSIONAL EXPERIENCE
+### Vice President
+
+**Clarity Global** · New York, NY · September 2025 -- Present
+
+- Serve as senior counsel and client lead at the global B2B technology communications and integrated marketing consultancy, functioning as an extension of clients' senior leadership teams on strategy, messaging, and growth.
+- Advise clients on human-centered messaging and integrated communications programs spanning media relations, content, digital media, and emerging AI search channels.
+- Lead new business development end-to-end, from first conversation through final pitch, with wins across specialized technology verticals including financial technology, AI, and data centers.
+- Develop and oversee thought leadership content strategy across owned and earned channels, with a focus on B2B technology audiences including CEOs, CIOs, and investors.
+- Spearhead agency positioning and internal use around AI, emerging technology, and generative search, including go-to-market for Surfacd, Clarity's proprietary AI visibility platform.
+- Represent Clarity Global externally at industry events, with media, and across agency marketing channels.
 
 ### Head of Corporate Communications, Sr. Product Marketing Manager
 
-**Plume Design** ·New York, NY ·November 2023 -- May 2025
+**Plume Design** · New York, NY · November 2023 -- May 2025
 
 - Directed global corporate and product communications strategies, driving significant increase in positive media coverage in connectivity and smart home sectors
 - Managed social media channels achieving 273% increase in impressions, 53% increase in engagements, and 11% increase in post link clicks
@@ -27,7 +37,7 @@ Experienced public relations and communications executive specializing in techno
 
 ### Head of Communications
 
-**Helbiz** ·New York, NY ·January 2022 -- December 2022
+**Helbiz** ·New York, NY · January 2022 -- December 2022
 
 - Established first U.S. communications team for shared mobility company, building structure from ground up
 - Advised executive leadership on media relations, business strategy, and crisis communications for NASDAQ-listed company
@@ -68,7 +78,7 @@ Experienced public relations and communications executive specializing in techno
 
 **Bachelor of Arts, Public Communication**
 The American University, School of Communication ·Washington, DC ·May 2015
-*Minors: Political Science and Justice*
+*Minors: Political Science and Criminal Justice*
 
 **Managing Risk in the Information Age Certificate**
 HarvardX ·November 2019
