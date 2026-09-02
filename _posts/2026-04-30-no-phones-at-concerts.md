@@ -3,8 +3,7 @@ title: Put your phone away
 date: 2026-04-30
 slug: no-phones-at-concerts
 layout: post
-summary: At two different concerns, the artists asked for phones to put away. I
-  don't think it was a coincidence.
+summary: At two different concerts, the artists asked for phones to put away. I don't think it was a coincidence.
 image: /assets/images/img_1377.jpg
 image_caption: Taken well before phones were requested to be stowed.
 ---
